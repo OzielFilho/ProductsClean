@@ -27,6 +27,13 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  async: 
+  flutter_mobx: 
+  mobx: 
+  rxdart: 
+  dartz: 
+  dio: 
+  flutter_modular: 
   flutter:
     sdk: flutter
 
@@ -36,6 +43,11 @@ dependencies:
   cupertino_icons: ^1.0.2
 
 dev_dependencies:
+  modular_codegen: 
+  mocktail: 
+  faker:
+  mobx_codegen: 
+  build_runner: 
   flutter_test:
     sdk: flutter
 
