@@ -7,4 +7,6 @@ abstract class AuthRepository {
   Future<Either<Failure, AuthResult>> loginWithFacebook();
   Future<Either<Failure, AuthResult>> loginWithEmailAndPassword(
       String email, String password);
+  Future<Either<Failure, void>> createAccountWithEmailAndPassword(
+      String email, String password);
 }
