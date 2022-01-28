@@ -53,4 +53,10 @@ class LoginRepositoryImpl implements AuthRepository {
       return Left(CreateAccountError());
     }
   }
+
+  @override
+  Future<Either<Failure, void>> recoveryPassword(String email) {
+    // TODO: implement recoveryPassword
+    throw UnimplementedError();
+  }
 }
