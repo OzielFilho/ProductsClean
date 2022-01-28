@@ -1,6 +1,8 @@
 import 'package:agence_teste/app/modules/login/domain/usecases/login_with_facebook.dart';
 import 'package:agence_teste/app/modules/login/domain/usecases/login_with_google.dart';
 import 'package:agence_teste/app/modules/login/infrastructure/models/login_result_model.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 import 'package:mobx/mobx.dart';
 
@@ -23,7 +25,6 @@ abstract class _LoginControllerBase with Store {
   @action
   loginWithFacebook() async {
     final result = await loginFacebook();
-    return result.fold(
-        (failure) => failure, (result) => result as LoginResults);
+    return result.fold((failure) => failure, (result) => result);
   }
 }

@@ -15,7 +15,7 @@ class LoginRepositoryImpl implements AuthRepository {
       final result = await datasource.loginWithFacebook();
       return Right(result);
     } catch (e) {
-      return Left(LoginError());
+      return Left(LoginError(message: 'Login Error'));
     }
   }
 
