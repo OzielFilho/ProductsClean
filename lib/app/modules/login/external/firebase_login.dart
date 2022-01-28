@@ -67,4 +67,11 @@ class FirebaseLogin implements LoginDatasource {
     }
     return LoginResults(user!.displayName!, await user.getIdToken());
   }
+
+  @override
+  Future<void> createAccountWithEmailAndPassword(
+      String email, String password) {
+    // TODO: implement createAccountWithEmailAndPassword
+    throw UnimplementedError();
+  }
 }

@@ -13,14 +13,6 @@ class ResultEmpty implements Failure {
   });
 }
 
-class LoginError implements Failure {
-  @override
-  String? message;
-  LoginError({
-    this.message,
-  });
-}
-
 class ParamsEmpty implements Failure {
   @override
   String? message;

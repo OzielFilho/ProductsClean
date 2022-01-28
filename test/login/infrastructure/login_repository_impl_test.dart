@@ -1,4 +1,4 @@
-import 'package:agence_teste/app/core/errors/errors.dart';
+import 'package:agence_teste/app/modules/login/domain/errors/errors.dart';
 import 'package:agence_teste/app/modules/login/infrastructure/datasources/login_datasource.dart';
 import 'package:agence_teste/app/modules/login/infrastructure/models/login_result_model.dart';
 import 'package:agence_teste/app/modules/login/infrastructure/repositories/login_repository.dart';
@@ -54,5 +54,15 @@ main() {
     final response = await repository!.loginWithGoogle();
 
     expect(response.fold((l) => l, (r) => null), isA<LoginError>());
+  });
+
+  test('Should return a Failure CreateAccountError', () async {
+    when(() => datasource!.createAccountWithEmailAndPassword(any(), any()))
+        .thenThrow((_) async => CreateAccountError());
+
+    final response = await repository!.createAccountWithEmailAndPassword(
+        faker.internet.email(), faker.internet.password());
+
+    expect(response.fold((l) => l, (r) => null), isA<CreateAccountError>());
   });
 }

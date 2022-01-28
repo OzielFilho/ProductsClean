@@ -1,5 +1,6 @@
 import 'package:agence_teste/app/core/errors/errors.dart';
 import 'package:agence_teste/app/modules/login/domain/entities/auth_result.dart';
+import 'package:agence_teste/app/modules/login/domain/errors/errors.dart';
 import 'package:agence_teste/app/modules/login/domain/repositories/auth_repository.dart';
 import 'package:agence_teste/app/modules/login/infrastructure/datasources/login_datasource.dart';
 import 'package:dartz/dartz.dart';
@@ -43,8 +44,13 @@ class LoginRepositoryImpl implements AuthRepository {
 
   @override
   Future<Either<Failure, void>> createAccountWithEmailAndPassword(
-      String email, String password) {
-    // TODO: implement createAccountWithEmailAndPassword
-    throw UnimplementedError();
+      String email, String password) async {
+    try {
+      final result =
+          await datasource.createAccountWithEmailAndPassword(email, password);
+      return Right(result);
+    } catch (e) {
+      return Left(CreateAccountError());
+    }
   }
 }

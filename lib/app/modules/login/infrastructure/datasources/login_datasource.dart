@@ -4,4 +4,5 @@ abstract class LoginDatasource {
   Future<LoginResults> loginWithGoogle();
   Future<LoginResults> loginWithFacebook();
   Future<LoginResults> loginWithEmailAndPassword(String email, String password);
+  Future<void> createAccountWithEmailAndPassword(String email, String password);
 }
