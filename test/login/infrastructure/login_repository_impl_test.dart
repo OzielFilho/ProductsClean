@@ -20,17 +20,19 @@ main() {
   });
 
   test('Should return a LoginResult', () async {
-    when(() => datasource!.login()).thenAnswer((_) async => resultLogin!);
+    when(() => datasource!.loginWithGoogle())
+        .thenAnswer((_) async => resultLogin!);
 
-    final response = await repository!.auth();
+    final response = await repository!.loginWithGoogle();
 
     expect(response.fold((l) => null, (r) => r), isA<LoginResult>());
   });
 
   test('Should return a Failure LoginError', () async {
-    when(() => datasource!.login()).thenThrow((_) async => LoginError());
+    when(() => datasource!.loginWithGoogle())
+        .thenThrow((_) async => LoginError());
 
-    final response = await repository!.auth();
+    final response = await repository!.loginWithGoogle();
 
     expect(response.fold((l) => l, (r) => null), isA<LoginError>());
   });

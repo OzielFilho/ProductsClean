@@ -8,10 +8,21 @@ class LoginRepositoryImpl implements AuthRepository {
   final LoginDatasource datasource;
 
   LoginRepositoryImpl(this.datasource);
+
   @override
-  Future<Either<Failure, AuthResult>> auth() async {
+  Future<Either<Failure, AuthResult>> loginWithFacebook() async {
     try {
-      final result = await datasource.login();
+      final result = await datasource.loginWithFacebook();
+      return Right(result);
+    } catch (e) {
+      return Left(LoginError());
+    }
+  }
+
+  @override
+  Future<Either<Failure, AuthResult>> loginWithGoogle() async {
+    try {
+      final result = await datasource.loginWithGoogle();
       return Right(result);
     } catch (e) {
       return Left(LoginError());

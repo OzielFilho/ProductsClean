@@ -3,16 +3,17 @@ import 'package:agence_teste/app/modules/login/domain/errors/errors.dart';
 import 'package:agence_teste/app/modules/login/domain/repositories/auth_repository.dart';
 import 'package:dartz/dartz.dart';
 
-abstract class AuthUser {
+abstract class LoginWithGoogle {
   Future<Either<Failure, AuthResult>> call();
 }
 
-class AuthUserImpl implements AuthUser {
+class LoginWithGoogleImpl implements LoginWithGoogle {
   final AuthRepository repository;
 
-  AuthUserImpl(this.repository);
+  LoginWithGoogleImpl(this.repository);
+
   @override
   Future<Either<Failure, AuthResult>> call() async {
-    return await repository.auth();
+    return await repository.loginWithGoogle();
   }
 }

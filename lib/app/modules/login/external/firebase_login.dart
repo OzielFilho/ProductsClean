@@ -3,13 +3,12 @@ import 'package:agence_teste/app/modules/login/infrastructure/models/login_resul
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-class LoginWithGoogle implements LoginDatasource {
-  final GoogleSignIn googleSignIn;
+class FirebaseLogin implements LoginDatasource {
   final FirebaseAuth auth;
-
-  LoginWithGoogle(this.googleSignIn, this.auth);
+  final GoogleSignIn googleSignIn;
+  FirebaseLogin(this.auth, this.googleSignIn);
   @override
-  Future<LoginResult> login() async {
+  Future<LoginResult> loginWithGoogle() async {
     User? user;
     final GoogleSignInAccount? googleSignInAccount =
         await googleSignIn.signIn();
@@ -33,5 +32,11 @@ class LoginWithGoogle implements LoginDatasource {
       }
     }
     return LoginResult(user!.displayName!, await user.getIdToken());
+  }
+
+  @override
+  Future<LoginResult> loginWithFacebook() {
+    // TODO: implement loginWithFacebook
+    throw UnimplementedError();
   }
 }

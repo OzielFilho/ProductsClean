@@ -1,20 +1,20 @@
-import 'package:agence_teste/app/modules/login/domain/usecases/auth_user.dart';
+import 'package:agence_teste/app/modules/login/domain/usecases/login_with_google.dart';
 import 'package:agence_teste/app/modules/login/infrastructure/models/login_result_model.dart';
 
 import 'package:mobx/mobx.dart';
 
 part 'login_controller.g.dart';
 
-class Logincontroller = _LogincontrollerBase with _$Logincontroller;
+class LoginController = _LoginControllerBase with _$LoginController;
 
-abstract class _LogincontrollerBase with Store {
-  final AuthUser authUser;
+abstract class _LoginControllerBase with Store {
+  final LoginWithGoogle loginGoogle;
 
-  _LogincontrollerBase(this.authUser);
+  _LoginControllerBase(this.loginGoogle);
 
   @action
-  login() async {
-    var result = await authUser();
+  loginWithGoogle() async {
+    var result = await loginGoogle();
     return result.fold((failure) => failure, (result) => result as LoginResult);
   }
 }
