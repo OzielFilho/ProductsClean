@@ -9,6 +9,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 import 'domain/usecases/create_account_with_email_and_password.dart';
 import 'domain/usecases/login_with_facebook.dart';
+import 'domain/usecases/recovery_password.dart';
 import 'external/firebase_login.dart';
 import 'infrastructure/repositories/login_repository.dart';
 
@@ -24,12 +25,13 @@ class LoginModule extends Module {
         Bind((i) => LoginWithEmailAndPasswordImpl(i<LoginRepositoryImpl>())),
         Bind((i) =>
             CreateAccountWithEmailAndPasswordImpl(i<LoginRepositoryImpl>())),
+        Bind((i) => RecoveryPasswordImpl(i<LoginRepositoryImpl>())),
         Bind((i) => LoginController(
-              i<LoginWithGoogleImpl>(),
-              i<LoginWithFacebookImpl>(),
-              i<LoginWithEmailAndPasswordImpl>(),
-              i<CreateAccountWithEmailAndPasswordImpl>(),
-            )),
+            i<LoginWithGoogleImpl>(),
+            i<LoginWithFacebookImpl>(),
+            i<LoginWithEmailAndPasswordImpl>(),
+            i<CreateAccountWithEmailAndPasswordImpl>(),
+            i<RecoveryPasswordImpl>())),
       ];
 
   @override

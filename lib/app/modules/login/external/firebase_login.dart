@@ -81,8 +81,13 @@ class FirebaseLogin implements LoginDatasource {
   }
 
   @override
-  Future<void> recoveryPassword(String email) {
-    // TODO: implement recoveryPassword
-    throw UnimplementedError();
+  Future<void> recoveryPassword(String email) async {
+    try {
+      await auth.sendPasswordResetEmail(
+        email: email,
+      );
+    } on FirebaseAuthException catch (_) {
+      FirebaseException(plugin: 'Error');
+    }
   }
 }
