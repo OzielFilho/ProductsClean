@@ -4,6 +4,7 @@ import 'package:agence_teste/app/modules/login/domain/usecases/login_with_facebo
 import 'package:agence_teste/app/modules/login/domain/usecases/login_with_google.dart';
 import 'package:agence_teste/app/modules/login/domain/usecases/recovery_password.dart';
 import 'package:agence_teste/app/modules/login/infrastructure/models/login_result_model.dart';
+import 'package:flutter/cupertino.dart';
 
 import 'package:mobx/mobx.dart';
 
@@ -19,6 +20,12 @@ abstract class _LoginControllerBase with Store {
   final RecoveryPassword recoveryPasswordI;
   _LoginControllerBase(this.loginGoogle, this.loginFacebook,
       this.loginWithEmail, this.createAccountWithEmail, this.recoveryPasswordI);
+
+  @observable
+  TextEditingController controllerEmail = TextEditingController();
+
+  @observable
+  TextEditingController controllerPassword = TextEditingController();
 
   @action
   loginWithGoogle() async {

@@ -1,3 +1,4 @@
+import 'package:agence_teste/app/core/utils/theme/theme_data_custom.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
@@ -6,9 +7,10 @@ class AppWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: 'Agence Teste',
-      debugShowCheckedModeBanner: false,
-    ).modular();
+    return MaterialApp(
+            title: 'Agence Teste',
+            debugShowCheckedModeBanner: false,
+            theme: ThemeDataCustom().theme)
+        .modular();
   }
 }

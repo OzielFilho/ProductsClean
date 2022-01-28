@@ -61,6 +61,7 @@ class FirebaseLogin implements LoginDatasource {
     try {
       final UserCredential userCredential = await auth
           .signInWithEmailAndPassword(email: email, password: password);
+
       user = userCredential.user;
     } on FirebaseAuthException catch (_) {
       FirebaseException(plugin: 'Error');
