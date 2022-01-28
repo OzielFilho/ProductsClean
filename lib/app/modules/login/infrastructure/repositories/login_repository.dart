@@ -55,8 +55,12 @@ class LoginRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<Either<Failure, void>> recoveryPassword(String email) {
-    // TODO: implement recoveryPassword
-    throw UnimplementedError();
+  Future<Either<Failure, void>> recoveryPassword(String email) async {
+    try {
+      final result = await datasource.recoveryPassword(email);
+      return Right(result);
+    } catch (e) {
+      return Left(RecoveryPasswordError());
+    }
   }
 }

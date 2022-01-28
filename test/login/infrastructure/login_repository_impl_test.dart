@@ -65,4 +65,16 @@ main() {
 
     expect(response.fold((l) => l, (r) => null), isA<CreateAccountError>());
   });
+
+  test('Should return a Failure RecoveryPasswordError', () async {
+    when(() => datasource!.recoveryPassword(
+          any(),
+        )).thenThrow((_) async => RecoveryPasswordError());
+
+    final response = await repository!.recoveryPassword(
+      faker.internet.email(),
+    );
+
+    expect(response.fold((l) => l, (r) => null), isA<RecoveryPasswordError>());
+  });
 }

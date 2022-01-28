@@ -15,3 +15,11 @@ class CreateAccountError implements Failure {
     this.message,
   });
 }
+
+class RecoveryPasswordError implements Failure {
+  @override
+  String? message;
+  RecoveryPasswordError({
+    this.message,
+  });
+}

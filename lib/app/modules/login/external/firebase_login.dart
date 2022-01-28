@@ -79,4 +79,10 @@ class FirebaseLogin implements LoginDatasource {
       FirebaseException(plugin: 'Error');
     }
   }
+
+  @override
+  Future<void> recoveryPassword(String email) {
+    // TODO: implement recoveryPassword
+    throw UnimplementedError();
+  }
 }
