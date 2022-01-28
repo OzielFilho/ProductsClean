@@ -3,4 +3,5 @@ import 'package:agence_teste/app/modules/login/infrastructure/models/login_resul
 abstract class LoginDatasource {
   Future<LoginResults> loginWithGoogle();
   Future<LoginResults> loginWithFacebook();
+  Future<LoginResults> loginWithEmailAndPassword(String email, String password);
 }

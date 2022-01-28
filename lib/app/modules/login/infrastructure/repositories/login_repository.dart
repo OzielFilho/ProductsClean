@@ -31,8 +31,13 @@ class LoginRepositoryImpl implements AuthRepository {
 
   @override
   Future<Either<Failure, AuthResult>> loginWithEmailAndPassword(
-      String email, String password) {
-    // TODO: implement loginWithEmailAndPassword
-    throw UnimplementedError();
+      String email, String password) async {
+    try {
+      final result =
+          await datasource.loginWithEmailAndPassword(email, password);
+      return Right(result);
+    } catch (e) {
+      return Left(LoginError());
+    }
   }
 }

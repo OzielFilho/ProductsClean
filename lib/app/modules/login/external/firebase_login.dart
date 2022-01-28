@@ -45,11 +45,25 @@ class FirebaseLogin implements LoginDatasource {
           FacebookAuthProvider.credential(result.accessToken!.token);
       try {
         final UserCredential userCredential =
-            await FirebaseAuth.instance.signInWithCredential(credential);
+            await auth.signInWithCredential(credential);
         user = userCredential.user;
       } on FirebaseAuthException catch (_) {
         FirebaseException(plugin: 'Error');
       }
+    }
+    return LoginResults(user!.displayName!, await user.getIdToken());
+  }
+
+  @override
+  Future<LoginResults> loginWithEmailAndPassword(
+      String email, String password) async {
+    User? user;
+    try {
+      final UserCredential userCredential = await auth
+          .signInWithEmailAndPassword(email: email, password: password);
+      user = userCredential.user;
+    } on FirebaseAuthException catch (_) {
+      FirebaseException(plugin: 'Error');
     }
     return LoginResults(user!.displayName!, await user.getIdToken());
   }

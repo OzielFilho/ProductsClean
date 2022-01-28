@@ -19,7 +19,7 @@ main() {
     resultLogin = LoginResults(faker.internet.userName(), faker.guid.guid());
   });
 
-  test('Should return a LoginResult', () async {
+  test('Should return a LoginResult google', () async {
     when(() => datasource!.loginWithGoogle())
         .thenAnswer((_) async => resultLogin!);
 
@@ -28,11 +28,21 @@ main() {
     expect(response.fold((l) => null, (r) => r), isA<LoginResults>());
   });
 
-  test('Should return a LoginResult', () async {
+  test('Should return a LoginResult facebook', () async {
     when(() => datasource!.loginWithFacebook())
         .thenAnswer((_) async => resultLogin!);
 
     final response = await repository!.loginWithFacebook();
+
+    expect(response.fold((l) => null, (r) => r), isA<LoginResults>());
+  });
+
+  test('Should return a LoginResult email and password', () async {
+    when(() => datasource!.loginWithEmailAndPassword(any(), any()))
+        .thenAnswer((_) async => resultLogin!);
+
+    final response = await repository!.loginWithEmailAndPassword(
+        faker.internet.email(), faker.internet.password());
 
     expect(response.fold((l) => null, (r) => r), isA<LoginResults>());
   });
