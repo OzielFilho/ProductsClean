@@ -28,4 +28,11 @@ class LoginRepositoryImpl implements AuthRepository {
       return Left(LoginError());
     }
   }
+
+  @override
+  Future<Either<Failure, AuthResult>> loginWithEmailAndPassword(
+      String email, String password) {
+    // TODO: implement loginWithEmailAndPassword
+    throw UnimplementedError();
+  }
 }

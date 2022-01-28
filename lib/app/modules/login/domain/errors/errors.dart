@@ -20,3 +20,11 @@ class LoginError implements Failure {
     this.message,
   });
 }
+
+class ParamsEmpty implements Failure {
+  @override
+  String? message;
+  ParamsEmpty({
+    this.message,
+  });
+}
