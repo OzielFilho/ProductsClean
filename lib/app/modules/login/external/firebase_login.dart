@@ -70,8 +70,13 @@ class FirebaseLogin implements LoginDatasource {
 
   @override
   Future<void> createAccountWithEmailAndPassword(
-      String email, String password) {
-    // TODO: implement createAccountWithEmailAndPassword
-    throw UnimplementedError();
+      String email, String password) async {
+    try {
+      await auth
+          .createUserWithEmailAndPassword(email: email, password: password)
+          .whenComplete(() => loginWithEmailAndPassword(email, password));
+    } on FirebaseAuthException catch (_) {
+      FirebaseException(plugin: 'Error');
+    }
   }
 }

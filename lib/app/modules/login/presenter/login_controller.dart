@@ -1,3 +1,4 @@
+import 'package:agence_teste/app/modules/login/domain/usecases/create_account_with_email_and_password.dart';
 import 'package:agence_teste/app/modules/login/domain/usecases/login_with_email_and_password.dart';
 import 'package:agence_teste/app/modules/login/domain/usecases/login_with_facebook.dart';
 import 'package:agence_teste/app/modules/login/domain/usecases/login_with_google.dart';
@@ -13,8 +14,9 @@ abstract class _LoginControllerBase with Store {
   final LoginWithGoogle loginGoogle;
   final LoginWithFacebook loginFacebook;
   final LoginWithEmailAndPassword loginWithEmail;
-  _LoginControllerBase(
-      this.loginGoogle, this.loginFacebook, this.loginWithEmail);
+  final CreateAccountWithEmailAndPassword createAccountWithEmail;
+  _LoginControllerBase(this.loginGoogle, this.loginFacebook,
+      this.loginWithEmail, this.createAccountWithEmail);
 
   @action
   loginWithGoogle() async {
@@ -32,6 +34,12 @@ abstract class _LoginControllerBase with Store {
   @action
   loginWithEmailAndPassword(String email, String password) async {
     final result = await loginWithEmail(email, password);
+    return result.fold((failure) => failure, (result) => result);
+  }
+
+  @action
+  createAccountWithEmailAndPassword(String email, String password) async {
+    final result = await createAccountWithEmail(email, password);
     return result.fold((failure) => failure, (result) => result);
   }
 }

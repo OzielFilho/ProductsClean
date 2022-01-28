@@ -7,6 +7,7 @@ import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
+import 'domain/usecases/create_account_with_email_and_password.dart';
 import 'domain/usecases/login_with_facebook.dart';
 import 'external/firebase_login.dart';
 import 'infrastructure/repositories/login_repository.dart';
@@ -21,8 +22,14 @@ class LoginModule extends Module {
         Bind((i) => LoginWithGoogleImpl(i<LoginRepositoryImpl>())),
         Bind((i) => LoginWithFacebookImpl(i<LoginRepositoryImpl>())),
         Bind((i) => LoginWithEmailAndPasswordImpl(i<LoginRepositoryImpl>())),
-        Bind((i) => LoginController(i<LoginWithGoogleImpl>(),
-            i<LoginWithFacebookImpl>(), i<LoginWithEmailAndPasswordImpl>())),
+        Bind((i) =>
+            CreateAccountWithEmailAndPasswordImpl(i<LoginRepositoryImpl>())),
+        Bind((i) => LoginController(
+              i<LoginWithGoogleImpl>(),
+              i<LoginWithFacebookImpl>(),
+              i<LoginWithEmailAndPasswordImpl>(),
+              i<CreateAccountWithEmailAndPasswordImpl>(),
+            )),
       ];
 
   @override
