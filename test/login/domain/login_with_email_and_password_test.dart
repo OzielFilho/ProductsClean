@@ -1,5 +1,5 @@
 import 'package:agence_teste/app/modules/login/domain/entities/auth_result.dart';
-import 'package:agence_teste/app/modules/login/domain/errors/errors.dart';
+import 'package:agence_teste/app/core/errors/errors.dart';
 import 'package:agence_teste/app/modules/login/domain/repositories/auth_repository.dart';
 import 'package:agence_teste/app/modules/login/domain/usecases/login_with_email_and_password.dart';
 import 'package:dartz/dartz.dart';

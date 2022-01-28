@@ -1,4 +1,4 @@
-import 'package:agence_teste/app/modules/login/domain/errors/errors.dart';
+import 'package:agence_teste/app/core/errors/errors.dart';
 import 'package:agence_teste/app/modules/login/infrastructure/datasources/login_datasource.dart';
 import 'package:agence_teste/app/modules/login/infrastructure/models/login_result_model.dart';
 import 'package:agence_teste/app/modules/login/infrastructure/repositories/login_repository.dart';
