@@ -17,7 +17,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
         child: const Text('login'),
         onPressed: () async {
           print('aqui');
-          await controller.loginWithGoogle();
+          await controller.loginWithFacebook().then((v) => print(v));
         },
       ),
     );

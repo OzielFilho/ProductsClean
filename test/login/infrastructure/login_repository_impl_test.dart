@@ -11,12 +11,12 @@ class LoginDataSourceImpl extends Mock implements LoginDatasource {}
 main() {
   LoginDatasource? datasource;
   LoginRepositoryImpl? repository;
-  LoginResult? resultLogin;
+  LoginResults? resultLogin;
 
   setUp(() {
     datasource = LoginDataSourceImpl();
     repository = LoginRepositoryImpl(datasource!);
-    resultLogin = LoginResult(faker.internet.userName(), faker.guid.guid());
+    resultLogin = LoginResults(faker.internet.userName(), faker.guid.guid());
   });
 
   test('Should return a LoginResult', () async {
@@ -25,7 +25,16 @@ main() {
 
     final response = await repository!.loginWithGoogle();
 
-    expect(response.fold((l) => null, (r) => r), isA<LoginResult>());
+    expect(response.fold((l) => null, (r) => r), isA<LoginResults>());
+  });
+
+  test('Should return a LoginResult', () async {
+    when(() => datasource!.loginWithFacebook())
+        .thenAnswer((_) async => resultLogin!);
+
+    final response = await repository!.loginWithFacebook();
+
+    expect(response.fold((l) => null, (r) => r), isA<LoginResults>());
   });
 
   test('Should return a Failure LoginError', () async {

@@ -1,3 +1,4 @@
+import 'package:agence_teste/app/modules/login/domain/usecases/login_with_facebook.dart';
 import 'package:agence_teste/app/modules/login/domain/usecases/login_with_google.dart';
 import 'package:agence_teste/app/modules/login/infrastructure/models/login_result_model.dart';
 
@@ -9,12 +10,20 @@ class LoginController = _LoginControllerBase with _$LoginController;
 
 abstract class _LoginControllerBase with Store {
   final LoginWithGoogle loginGoogle;
-
-  _LoginControllerBase(this.loginGoogle);
+  final LoginWithFacebook loginFacebook;
+  _LoginControllerBase(this.loginGoogle, this.loginFacebook);
 
   @action
   loginWithGoogle() async {
-    var result = await loginGoogle();
-    return result.fold((failure) => failure, (result) => result as LoginResult);
+    final result = await loginGoogle();
+    return result.fold(
+        (failure) => failure, (result) => result as LoginResults);
+  }
+
+  @action
+  loginWithFacebook() async {
+    final result = await loginFacebook();
+    return result.fold(
+        (failure) => failure, (result) => result as LoginResults);
   }
 }

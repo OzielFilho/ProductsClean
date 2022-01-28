@@ -17,6 +17,14 @@ mixin _$LoginController on _LoginControllerBase, Store {
     return _$loginWithGoogleAsyncAction.run(() => super.loginWithGoogle());
   }
 
+  final _$loginWithFacebookAsyncAction =
+      AsyncAction('_LoginControllerBase.loginWithFacebook');
+
+  @override
+  Future loginWithFacebook() {
+    return _$loginWithFacebookAsyncAction.run(() => super.loginWithFacebook());
+  }
+
   @override
   String toString() {
     return '''

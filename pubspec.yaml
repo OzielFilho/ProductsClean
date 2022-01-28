@@ -36,7 +36,7 @@ dependencies:
   flutter_modular: 
   flutter:
     sdk: flutter
-
+  flutter_facebook_auth: ^4.0.1
   cupertino_icons: ^1.0.2
   firebase_auth: ^3.3.6
   firebase_core: ^1.12.0
