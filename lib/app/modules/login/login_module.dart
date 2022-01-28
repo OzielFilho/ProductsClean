@@ -1,3 +1,4 @@
+import 'package:agence_teste/app/modules/login/domain/usecases/login_with_email_and_password.dart';
 import 'package:agence_teste/app/modules/login/domain/usecases/login_with_google.dart';
 import 'package:agence_teste/app/modules/login/presenter/login_controller.dart';
 import 'package:agence_teste/app/modules/login/presenter/login_page.dart';
@@ -19,8 +20,9 @@ class LoginModule extends Module {
         Bind((i) => LoginRepositoryImpl(i<FirebaseLogin>())),
         Bind((i) => LoginWithGoogleImpl(i<LoginRepositoryImpl>())),
         Bind((i) => LoginWithFacebookImpl(i<LoginRepositoryImpl>())),
-        Bind((i) => LoginController(
-            i<LoginWithGoogleImpl>(), i<LoginWithFacebookImpl>())),
+        Bind((i) => LoginWithEmailAndPasswordImpl(i<LoginRepositoryImpl>())),
+        Bind((i) => LoginController(i<LoginWithGoogleImpl>(),
+            i<LoginWithFacebookImpl>(), i<LoginWithEmailAndPasswordImpl>())),
       ];
 
   @override
