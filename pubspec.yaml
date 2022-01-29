@@ -32,7 +32,6 @@ dependencies:
   mobx: 
   rxdart: 
   dartz: 
-  dio: 
   flutter_modular: 
   flutter:
     sdk: flutter
@@ -42,6 +41,7 @@ dependencies:
   firebase_core: ^1.12.0
   google_sign_in: ^5.2.3
   font_awesome_flutter: ^9.2.0
+  asuka: ^2.0.0
 
 dev_dependencies:
   modular_codegen: 

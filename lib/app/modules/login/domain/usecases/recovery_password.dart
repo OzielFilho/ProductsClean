@@ -14,7 +14,7 @@ class RecoveryPasswordImpl implements RecoveryPassword {
   @override
   Future<Either<Failure, void>> call(String email) async {
     if (email.isEmpty) {
-      return Left(ParamsEmpty(message: 'Email or Password is empty'));
+      return Left(ParamsEmpty(message: 'Email is empty'));
     }
     return await repository.recoveryPassword(email);
   }

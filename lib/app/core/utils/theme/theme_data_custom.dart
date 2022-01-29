@@ -5,6 +5,72 @@ class ThemeDataCustom {
       backgroundColor: const Color(0xff24252A),
       primaryColor: const Color(0xffffcb2a),
       splashColor: Colors.white,
+      textButtonTheme: TextButtonThemeData(
+        style: TextButton.styleFrom(
+          primary: const Color(0xffffcb2a),
+        ),
+      ),
+      textTheme: TextStyleTheme().textTheme,
       iconTheme: const IconThemeData(color: Colors.white, size: 20),
       scaffoldBackgroundColor: const Color(0xff24252A));
+}
+
+class TextStyleTheme {
+  TextTheme get textTheme => TextTheme(
+        bodyText1: const TextStyle(
+          fontSize: 14,
+          fontWeight: FontWeight.w500,
+          color: Colors.white,
+        ),
+        bodyText2: const TextStyle(
+          fontSize: 14,
+          fontWeight: FontWeight.w500,
+          color: Color(0xffffcb2a),
+        ),
+        button: const TextStyle(
+          fontSize: 14,
+          fontWeight: FontWeight.w500,
+          color: Colors.black,
+        ),
+        subtitle1: const TextStyle(
+          fontSize: 12,
+          fontWeight: FontWeight.w500,
+          color: Colors.white,
+        ),
+        subtitle2: TextStyle(
+          fontSize: 12,
+          fontWeight: FontWeight.w500,
+          color: Colors.grey[300],
+        ),
+        headline1: const TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.w600,
+          color: Colors.white,
+        ),
+        headline2: const TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.normal,
+          color: Colors.white,
+        ),
+        headline3: const TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.w600,
+          color: Color(0xffffcb2a),
+        ),
+        headline4: const TextStyle(
+          fontSize: 18,
+          fontWeight: FontWeight.w700,
+          color: Colors.white,
+        ),
+        headline5: const TextStyle(
+          fontSize: 18,
+          fontWeight: FontWeight.w600,
+          color: Color(0xffffcb2a),
+        ),
+        headline6: const TextStyle(
+          fontSize: 20,
+          fontWeight: FontWeight.w700,
+          color: Color(0xffffcb2a),
+        ),
+      );
 }

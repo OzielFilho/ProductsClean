@@ -1,3 +1,4 @@
+import 'package:agence_teste/app/core/utils/functions/showLoading.dart';
 import 'package:agence_teste/app/modules/login/domain/usecases/login_with_email_and_password.dart';
 import 'package:agence_teste/app/modules/login/domain/usecases/login_with_google.dart';
 import 'package:agence_teste/app/modules/login/presenter/login_controller.dart';
@@ -26,12 +27,14 @@ class LoginModule extends Module {
         Bind((i) =>
             CreateAccountWithEmailAndPasswordImpl(i<AuthRepositoryImpl>())),
         Bind((i) => RecoveryPasswordImpl(i<AuthRepositoryImpl>())),
+        Bind((i) => LoadingDialogImpl()),
         Bind((i) => LoginController(
             i<LoginWithGoogleImpl>(),
             i<LoginWithFacebookImpl>(),
             i<LoginWithEmailAndPasswordImpl>(),
             i<CreateAccountWithEmailAndPasswordImpl>(),
-            i<RecoveryPasswordImpl>())),
+            i<RecoveryPasswordImpl>(),
+            i<LoadingDialogImpl>())),
       ];
 
   @override
