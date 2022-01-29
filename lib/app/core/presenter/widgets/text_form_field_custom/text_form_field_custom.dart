@@ -5,12 +5,14 @@ class CustomTextFormFieldCustom extends StatelessWidget {
   final bool issecured;
   final Icon icon;
   final TextEditingController controllerText;
+  final String? Function(String? value)? valid;
   const CustomTextFormFieldCustom(
       {Key? key,
       required this.hint,
       required this.issecured,
       required this.icon,
-      required this.controllerText})
+      required this.controllerText,
+      this.valid})
       : super(key: key);
 
   @override
@@ -19,6 +21,7 @@ class CustomTextFormFieldCustom extends StatelessWidget {
         padding: const EdgeInsets.only(left: 20, right: 20, top: 10),
         child: TextFormField(
           controller: controllerText,
+          validator: valid,
           keyboardType:
               issecured ? TextInputType.visiblePassword : TextInputType.text,
           obscureText: issecured,

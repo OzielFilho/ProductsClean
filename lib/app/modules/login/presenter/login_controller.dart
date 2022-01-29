@@ -1,4 +1,4 @@
-import 'package:agence_teste/app/core/utils/functions/showLoading.dart';
+import 'package:agence_teste/app/core/presenter/widgets/loading/showLoading.dart';
 import 'package:agence_teste/app/modules/login/domain/usecases/create_account_with_email_and_password.dart';
 import 'package:agence_teste/app/modules/login/domain/usecases/login_with_email_and_password.dart';
 import 'package:agence_teste/app/modules/login/domain/usecases/login_with_facebook.dart';

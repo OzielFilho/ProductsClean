@@ -1,6 +1,6 @@
 import 'package:agence_teste/app/core/presenter/widgets/buttom_custom/buttom_custom.dart';
-import 'package:agence_teste/app/core/presenter/widgets/text_form_field_custom/text_form_field_custom.dart';
 import 'package:agence_teste/app/modules/login/presenter/login_controller.dart';
+import 'package:agence_teste/app/modules/login/presenter/widgets/form_login_email_widget/form_login_email_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -26,40 +26,10 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
               'https://cdn4.iconfinder.com/data/icons/google-i-o-2016/512/google_firebase-2-512.png',
               height: MediaQuery.of(context).size.height * 0.4,
             ),
-            CustomTextFormFieldCustom(
-              controllerText: controller.controllerEmail,
-              hint: 'Email',
-              issecured: false,
-              icon: Icon(
-                Icons.email,
-                color: Theme.of(context).splashColor,
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            CustomTextFormFieldCustom(
-              controllerText: controller.controllerPassword,
-              hint: 'Password',
-              issecured: true,
-              icon: Icon(
-                Icons.lock,
-                color: Theme.of(context).splashColor,
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            ButtomCustom(
-                title: 'Login',
-                onTap: () {
-                  controller.loginWithEmailAndPassword(
-                      controller.controllerEmail.text,
-                      controller.controllerPassword.text);
-                }),
             const SizedBox(
               height: 15,
             ),
+            FormLoginEmailWidget(),
             ButtomCustom(
               title: 'Login with Google',
               onTap: controller.loginGoogle,

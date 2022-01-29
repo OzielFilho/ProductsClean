@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:asuka/asuka.dart' as asuka;
 import 'package:flutter/material.dart';
 
