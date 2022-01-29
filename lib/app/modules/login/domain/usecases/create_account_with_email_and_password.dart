@@ -15,7 +15,7 @@ class CreateAccountWithEmailAndPasswordImpl
   @override
   Future<Either<Failure, void>> call(String email, String password) async {
     if (email.isEmpty || password.isEmpty) {
-      return Left(ParamsEmpty());
+      return Left(ParamsEmpty(message: 'Email or Password is empty'));
     }
     return await repository.createAccountWithEmailAndPassword(email, password);
   }

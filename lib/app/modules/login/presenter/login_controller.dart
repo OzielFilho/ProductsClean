@@ -3,7 +3,7 @@ import 'package:agence_teste/app/modules/login/domain/usecases/login_with_email_
 import 'package:agence_teste/app/modules/login/domain/usecases/login_with_facebook.dart';
 import 'package:agence_teste/app/modules/login/domain/usecases/login_with_google.dart';
 import 'package:agence_teste/app/modules/login/domain/usecases/recovery_password.dart';
-import 'package:agence_teste/app/modules/login/infrastructure/models/login_result_model.dart';
+import 'package:agence_teste/app/modules/login/infrastructure/models/authentication_result_model.dart';
 import 'package:flutter/cupertino.dart';
 
 import 'package:mobx/mobx.dart';
@@ -31,19 +31,21 @@ abstract class _LoginControllerBase with Store {
   loginWithGoogle() async {
     final result = await loginGoogle();
     return result.fold(
-        (failure) => failure, (result) => result as LoginResults);
+        (failure) => failure, (result) => result as AuthenticationResult);
   }
 
   @action
   loginWithFacebook() async {
     final result = await loginFacebook();
-    return result.fold((failure) => failure, (result) => result);
+    return result.fold(
+        (failure) => failure, (result) => result as AuthenticationResult);
   }
 
   @action
   loginWithEmailAndPassword(String email, String password) async {
     final result = await loginWithEmail(email, password);
-    return result.fold((failure) => failure, (result) => result);
+    return result.fold(
+        (failure) => failure, (result) => result as AuthenticationResult);
   }
 
   @action

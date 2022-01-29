@@ -1,16 +1,16 @@
-import 'package:agence_teste/app/modules/login/infrastructure/datasources/login_datasource.dart';
-import 'package:agence_teste/app/modules/login/infrastructure/models/login_result_model.dart';
+import 'package:agence_teste/app/modules/login/infrastructure/datasources/auth_datasource.dart';
+import 'package:agence_teste/app/modules/login/infrastructure/models/authentication_result_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-class FirebaseLogin implements LoginDatasource {
+class FirebaseLogin implements AuthDatasource {
   final FirebaseAuth auth;
   final GoogleSignIn googleSignIn;
   final FacebookAuth facebookLogin;
   FirebaseLogin(this.auth, this.googleSignIn, this.facebookLogin);
   @override
-  Future<LoginResults> loginWithGoogle() async {
+  Future<AuthenticationResult> loginWithGoogle() async {
     User? user;
     final GoogleSignInAccount? googleSignInAccount =
         await googleSignIn.signIn();
@@ -33,11 +33,11 @@ class FirebaseLogin implements LoginDatasource {
         FirebaseException(plugin: 'Error');
       }
     }
-    return LoginResults(user!.displayName!, await user.getIdToken());
+    return AuthenticationResult(user!.displayName!, await user.getIdToken());
   }
 
   @override
-  Future<LoginResults> loginWithFacebook() async {
+  Future<AuthenticationResult> loginWithFacebook() async {
     final LoginResult result = await FacebookAuth.instance.login();
     User? user;
     if (result.status == LoginStatus.success) {
@@ -51,11 +51,11 @@ class FirebaseLogin implements LoginDatasource {
         FirebaseException(plugin: 'Error');
       }
     }
-    return LoginResults(user!.displayName!, await user.getIdToken());
+    return AuthenticationResult(user!.displayName!, await user.getIdToken());
   }
 
   @override
-  Future<LoginResults> loginWithEmailAndPassword(
+  Future<AuthenticationResult> loginWithEmailAndPassword(
       String email, String password) async {
     User? user;
     try {
@@ -66,7 +66,7 @@ class FirebaseLogin implements LoginDatasource {
     } on FirebaseAuthException catch (_) {
       FirebaseException(plugin: 'Error');
     }
-    return LoginResults(user!.displayName!, await user.getIdToken());
+    return AuthenticationResult(user!.displayName!, await user.getIdToken());
   }
 
   @override

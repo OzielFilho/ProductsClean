@@ -11,7 +11,7 @@ import 'domain/usecases/create_account_with_email_and_password.dart';
 import 'domain/usecases/login_with_facebook.dart';
 import 'domain/usecases/recovery_password.dart';
 import 'external/firebase_login.dart';
-import 'infrastructure/repositories/login_repository.dart';
+import 'infrastructure/repositories/auth_repository_impl.dart';
 
 class LoginModule extends Module {
   @override
@@ -19,13 +19,13 @@ class LoginModule extends Module {
         Bind((i) => GoogleSignIn()),
         Bind((i) => FirebaseLogin(
             FirebaseAuth.instance, i<GoogleSignIn>(), FacebookAuth.instance)),
-        Bind((i) => LoginRepositoryImpl(i<FirebaseLogin>())),
-        Bind((i) => LoginWithGoogleImpl(i<LoginRepositoryImpl>())),
-        Bind((i) => LoginWithFacebookImpl(i<LoginRepositoryImpl>())),
-        Bind((i) => LoginWithEmailAndPasswordImpl(i<LoginRepositoryImpl>())),
+        Bind((i) => AuthRepositoryImpl(i<FirebaseLogin>())),
+        Bind((i) => LoginWithGoogleImpl(i<AuthRepositoryImpl>())),
+        Bind((i) => LoginWithFacebookImpl(i<AuthRepositoryImpl>())),
+        Bind((i) => LoginWithEmailAndPasswordImpl(i<AuthRepositoryImpl>())),
         Bind((i) =>
-            CreateAccountWithEmailAndPasswordImpl(i<LoginRepositoryImpl>())),
-        Bind((i) => RecoveryPasswordImpl(i<LoginRepositoryImpl>())),
+            CreateAccountWithEmailAndPasswordImpl(i<AuthRepositoryImpl>())),
+        Bind((i) => RecoveryPasswordImpl(i<AuthRepositoryImpl>())),
         Bind((i) => LoginController(
             i<LoginWithGoogleImpl>(),
             i<LoginWithFacebookImpl>(),

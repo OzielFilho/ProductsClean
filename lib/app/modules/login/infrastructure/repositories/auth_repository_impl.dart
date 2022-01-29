@@ -2,13 +2,13 @@ import 'package:agence_teste/app/core/errors/errors.dart';
 import 'package:agence_teste/app/modules/login/domain/entities/auth_result.dart';
 import 'package:agence_teste/app/modules/login/domain/errors/errors.dart';
 import 'package:agence_teste/app/modules/login/domain/repositories/auth_repository.dart';
-import 'package:agence_teste/app/modules/login/infrastructure/datasources/login_datasource.dart';
+import 'package:agence_teste/app/modules/login/infrastructure/datasources/auth_datasource.dart';
 import 'package:dartz/dartz.dart';
 
-class LoginRepositoryImpl implements AuthRepository {
-  final LoginDatasource datasource;
+class AuthRepositoryImpl implements AuthRepository {
+  final AuthDatasource datasource;
 
-  LoginRepositoryImpl(this.datasource);
+  AuthRepositoryImpl(this.datasource);
 
   @override
   Future<Either<Failure, AuthResult>> loginWithFacebook() async {
@@ -16,7 +16,7 @@ class LoginRepositoryImpl implements AuthRepository {
       final result = await datasource.loginWithFacebook();
       return Right(result);
     } catch (e) {
-      return Left(LoginError(message: 'Login Error'));
+      return Left(LoginError(message: 'Erro Login Facebook'));
     }
   }
 
@@ -26,7 +26,7 @@ class LoginRepositoryImpl implements AuthRepository {
       final result = await datasource.loginWithGoogle();
       return Right(result);
     } catch (e) {
-      return Left(LoginError());
+      return Left(LoginError(message: 'Erro Login Google'));
     }
   }
 
@@ -38,7 +38,7 @@ class LoginRepositoryImpl implements AuthRepository {
           await datasource.loginWithEmailAndPassword(email, password);
       return Right(result);
     } catch (e) {
-      return Left(LoginError());
+      return Left(LoginError(message: 'Erro Login Email and Password'));
     }
   }
 
@@ -50,7 +50,8 @@ class LoginRepositoryImpl implements AuthRepository {
           await datasource.createAccountWithEmailAndPassword(email, password);
       return Right(result);
     } catch (e) {
-      return Left(CreateAccountError());
+      return Left(CreateAccountError(
+          message: 'Erro in Create Account with Email and Password'));
     }
   }
 
@@ -60,7 +61,7 @@ class LoginRepositoryImpl implements AuthRepository {
       final result = await datasource.recoveryPassword(email);
       return Right(result);
     } catch (e) {
-      return Left(RecoveryPasswordError());
+      return Left(RecoveryPasswordError(message: 'Erro recovery Password'));
     }
   }
 }
