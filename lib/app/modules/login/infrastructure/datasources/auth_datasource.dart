@@ -7,4 +7,6 @@ abstract class AuthDatasource {
       String email, String password);
   Future<void> createAccountWithEmailAndPassword(String email, String password);
   Future<void> recoveryPassword(String email);
+  Future<UserResultLogged> getUserLogged();
+  Future<Unit> logout();
 }

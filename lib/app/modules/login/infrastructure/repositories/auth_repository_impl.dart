@@ -68,9 +68,13 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<Either<Failure, LoggedUserInfo>> loggedUser() {
-    // TODO: implement loggedUser
-    throw UnimplementedError();
+  Future<Either<Failure, LoggedUserInfo>> loggedUser() async {
+    try{
+      final result = await datasource.getUserLogged();
+      return Right(result);
+    }catch(e){
+      return Left(RecoveryPasswordError(message: 'Erro recovery Password'));
+    }
   }
 
   @override
