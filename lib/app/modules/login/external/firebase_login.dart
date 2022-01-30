@@ -1,5 +1,7 @@
+import 'package:agence_teste/app/core/errors/errors.dart';
 import 'package:agence_teste/app/modules/login/infrastructure/datasources/auth_datasource.dart';
 import 'package:agence_teste/app/modules/login/infrastructure/models/authentication_result_model.dart';
+import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -47,8 +49,8 @@ class FirebaseLogin implements AuthDatasource {
         final UserCredential userCredential =
             await auth.signInWithCredential(credential);
         user = userCredential.user;
-      } on FirebaseAuthException catch (_) {
-        FirebaseException(plugin: 'Error');
+      } on FirebaseAuthException catch (e) {
+        Left(Failure(message: e.message));
       }
     }
     return AuthenticationResult(user!.displayName!, await user.getIdToken());
@@ -63,8 +65,8 @@ class FirebaseLogin implements AuthDatasource {
           .signInWithEmailAndPassword(email: email, password: password);
 
       user = userCredential.user;
-    } on FirebaseAuthException catch (_) {
-      FirebaseException(plugin: 'Error');
+    } on FirebaseAuthException catch (e) {
+      Left(Failure(message: e.message));
     }
     return AuthenticationResult(user!.displayName!, await user.getIdToken());
   }
@@ -73,9 +75,8 @@ class FirebaseLogin implements AuthDatasource {
   Future<void> createAccountWithEmailAndPassword(
       String email, String password) async {
     try {
-      await auth
-          .createUserWithEmailAndPassword(email: email, password: password)
-          .whenComplete(() => loginWithEmailAndPassword(email, password));
+      await auth.createUserWithEmailAndPassword(
+          email: email, password: password);
     } on FirebaseAuthException catch (_) {
       FirebaseException(plugin: 'Error');
     }

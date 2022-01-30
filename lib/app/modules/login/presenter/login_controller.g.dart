@@ -66,24 +66,6 @@ mixin _$LoginController on _LoginControllerBase, Store {
         .run(() => super.loginWithEmailAndPassword(email, password));
   }
 
-  final _$createAccountWithEmailAndPasswordAsyncAction =
-      AsyncAction('_LoginControllerBase.createAccountWithEmailAndPassword');
-
-  @override
-  Future createAccountWithEmailAndPassword(String email, String password) {
-    return _$createAccountWithEmailAndPasswordAsyncAction
-        .run(() => super.createAccountWithEmailAndPassword(email, password));
-  }
-
-  final _$recoveryPasswordAsyncAction =
-      AsyncAction('_LoginControllerBase.recoveryPassword');
-
-  @override
-  Future recoveryPassword(String email) {
-    return _$recoveryPasswordAsyncAction
-        .run(() => super.recoveryPassword(email));
-  }
-
   @override
   String toString() {
     return '''

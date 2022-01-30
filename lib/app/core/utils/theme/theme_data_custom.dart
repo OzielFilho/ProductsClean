@@ -10,6 +10,9 @@ class ThemeDataCustom {
           primary: const Color(0xffffcb2a),
         ),
       ),
+      appBarTheme: const AppBarTheme(
+        backgroundColor: Color(0xff1a1b1f),
+      ),
       textTheme: TextStyleTheme().textTheme,
       iconTheme: const IconThemeData(color: Colors.white, size: 20),
       scaffoldBackgroundColor: const Color(0xff24252A));

@@ -32,20 +32,19 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
             FormLoginEmailWidget(),
             ButtomCustom(
               title: 'Login with Google',
-              onTap: controller.loginGoogle,
+              onTap: () => controller.loginWithGoogle(),
               icon: const Icon(FontAwesomeIcons.google),
             ),
             ButtomCustom(
               title: 'Login with Facebook',
-              onTap: controller.loginFacebook,
+              onTap: () => controller.loginWithFacebook(),
               icon: const Icon(FontAwesomeIcons.facebook),
             ),
             TextButton(
-                onPressed: () =>
-                    controller.createAccountWithEmailAndPassword('', ''),
+                onPressed: () => Modular.to.pushNamed('/create'),
                 child: const Text('Create Account in App')),
             TextButton(
-                onPressed: () => controller.recoveryPassword(''),
+                onPressed: () => Modular.to.pushNamed('/recovery'),
                 child: const Text('Forgot my Password!'))
           ],
         ),

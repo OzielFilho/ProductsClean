@@ -9,4 +9,6 @@ class Validations {
       .hasMatch(value!));
 
   bool get isPassword => value!.length > 6;
+
+  bool equatablePassword(String pwConfime) => value == pwConfime;
 }

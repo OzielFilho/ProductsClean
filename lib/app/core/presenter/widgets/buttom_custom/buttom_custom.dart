@@ -20,7 +20,7 @@ class ButtomCustom extends StatelessWidget {
     return Align(
       alignment: alignment ?? Alignment.center,
       child: SizedBox(
-        width: icon != null ? 240 : 120,
+        width: icon != null ? 240 : 168,
         child: MaterialButton(
           height: 45,
           minWidth: 50,
