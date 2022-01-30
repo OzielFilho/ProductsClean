@@ -32,12 +32,12 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
             FormLoginEmailWidget(),
             ButtomCustom(
               title: 'Login with Google',
-              onTap: () => controller.loginWithGoogle(),
+              onTap: controller.loginGoogle,
               icon: const Icon(FontAwesomeIcons.google),
             ),
             ButtomCustom(
               title: 'Login with Facebook',
-              onTap: () => controller.loginWithFacebook(),
+              onTap: controller.loginWithFacebook,
               icon: const Icon(FontAwesomeIcons.facebook),
             ),
             TextButton(

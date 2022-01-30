@@ -13,13 +13,13 @@ class FirebaseLogin implements AuthDatasource {
   FirebaseLogin(this.auth, this.googleSignIn, this.facebookLogin);
   @override
   Future<AuthenticationResult> loginWithGoogle() async {
-    User? user;
-    final GoogleSignInAccount? googleSignInAccount =
-        await googleSignIn.signIn();
+    final GoogleSignInAccount? result = await googleSignIn.signIn();
 
-    if (googleSignInAccount != null) {
+    User? user;
+
+    if (result != null) {
       final GoogleSignInAuthentication googleSignInAuthentication =
-          await googleSignInAccount.authentication;
+          await result.authentication;
 
       final AuthCredential credential = GoogleAuthProvider.credential(
         accessToken: googleSignInAuthentication.accessToken,
@@ -31,9 +31,11 @@ class FirebaseLogin implements AuthDatasource {
             await auth.signInWithCredential(credential);
 
         user = userCredential.user;
-      } on FirebaseAuthException catch (_) {
-        FirebaseException(plugin: 'Error');
+      } on FirebaseAuthException catch (e) {
+        Left(Failure(message: e.message));
       }
+    } else {
+      Left(Failure(message: 'Erro in Google Dependence'));
     }
     return AuthenticationResult(user!.displayName!, await user.getIdToken());
   }

@@ -21,9 +21,8 @@ import 'infrastructure/repositories/auth_repository_impl.dart';
 class LoginModule extends Module {
   @override
   List<Bind> get binds => [
-        Bind((i) => GoogleSignIn()),
         Bind((i) => FirebaseLogin(
-            FirebaseAuth.instance, i<GoogleSignIn>(), FacebookAuth.instance)),
+            FirebaseAuth.instance, GoogleSignIn(), FacebookAuth.instance)),
         Bind((i) => AuthRepositoryImpl(i<FirebaseLogin>())),
         Bind((i) => LoginWithGoogleImpl(i<AuthRepositoryImpl>())),
         Bind((i) => LoginWithFacebookImpl(i<AuthRepositoryImpl>())),
@@ -32,17 +31,17 @@ class LoginModule extends Module {
             CreateAccountWithEmailAndPasswordImpl(i<AuthRepositoryImpl>())),
         Bind((i) => RecoveryPasswordImpl(i<AuthRepositoryImpl>())),
         Bind((i) => LoadingDialogImpl()),
+        Bind((i) => LoginController(
+            i<LoginWithGoogleImpl>(),
+            i<LoginWithFacebookImpl>(),
+            i<LoginWithEmailAndPasswordImpl>(),
+            i<LoadingDialogImpl>())),
         Bind((i) => RecoveryPasswordPageController(
               i<LoadingDialogImpl>(),
               i<RecoveryPasswordImpl>(),
             )),
         Bind((i) => CreateAccountPageController(
             i<CreateAccountWithEmailAndPasswordImpl>(),
-            i<LoadingDialogImpl>())),
-        Bind((i) => LoginController(
-            i<LoginWithGoogleImpl>(),
-            i<LoginWithFacebookImpl>(),
-            i<LoginWithEmailAndPasswordImpl>(),
             i<LoadingDialogImpl>())),
       ];
 

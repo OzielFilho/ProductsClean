@@ -41,12 +41,12 @@ mixin _$LoginController on _LoginControllerBase, Store {
     });
   }
 
-  final _$loginWithGoogleAsyncAction =
-      AsyncAction('_LoginControllerBase.loginWithGoogle');
+  final _$loginGoogleAsyncAction =
+      AsyncAction('_LoginControllerBase.loginGoogle');
 
   @override
-  Future loginWithGoogle() {
-    return _$loginWithGoogleAsyncAction.run(() => super.loginWithGoogle());
+  Future loginGoogle() {
+    return _$loginGoogleAsyncAction.run(() => super.loginGoogle());
   }
 
   final _$loginWithFacebookAsyncAction =

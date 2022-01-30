@@ -24,6 +24,7 @@ class AuthRepositoryImpl implements AuthRepository {
   Future<Either<Failure, AuthResult>> loginWithGoogle() async {
     try {
       final result = await datasource.loginWithGoogle();
+
       return Right(result);
     } catch (e) {
       return Left(LoginError(message: 'Erro Login Google'));

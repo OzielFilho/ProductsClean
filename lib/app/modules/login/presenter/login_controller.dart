@@ -2,7 +2,6 @@ import 'package:agence_teste/app/core/presenter/widgets/loading/showLoading.dart
 import 'package:agence_teste/app/modules/login/domain/usecases/login_with_email_and_password.dart';
 import 'package:agence_teste/app/modules/login/domain/usecases/login_with_facebook.dart';
 import 'package:agence_teste/app/modules/login/domain/usecases/login_with_google.dart';
-import 'package:agence_teste/app/modules/login/domain/usecases/recovery_password.dart';
 import 'package:agence_teste/app/modules/login/infrastructure/models/authentication_result_model.dart';
 import 'package:asuka/asuka.dart' as asuka;
 import 'package:flutter/material.dart';
@@ -14,12 +13,12 @@ class LoginController = _LoginControllerBase with _$LoginController;
 
 abstract class _LoginControllerBase with Store {
   final LoadingDialog loading;
-  final LoginWithGoogle loginGoogle;
+  final LoginWithGoogle loginWithGoogle;
   final LoginWithFacebook loginFacebook;
   final LoginWithEmailAndPassword loginWithEmail;
 
-  _LoginControllerBase(
-      this.loginGoogle, this.loginFacebook, this.loginWithEmail, this.loading);
+  _LoginControllerBase(this.loginWithGoogle, this.loginFacebook,
+      this.loginWithEmail, this.loading);
 
   @observable
   TextEditingController controllerEmail = TextEditingController();
@@ -28,8 +27,8 @@ abstract class _LoginControllerBase with Store {
   TextEditingController controllerPassword = TextEditingController();
 
   @action
-  loginWithGoogle() async {
-    final result = await loginGoogle();
+  loginGoogle() async {
+    final result = await loginWithGoogle();
     return result.fold(
         (failure) =>
             asuka.showSnackBar(SnackBar(content: Text(failure.message!))),
