@@ -1,5 +1,6 @@
 import 'package:agence_teste/app/core/errors/errors.dart';
 import 'package:agence_teste/app/modules/login/domain/entities/auth_result.dart';
+import 'package:agence_teste/app/modules/login/domain/entities/logged_user_info.dart';
 import 'package:agence_teste/app/modules/login/domain/errors/errors.dart';
 import 'package:agence_teste/app/modules/login/domain/repositories/auth_repository.dart';
 import 'package:agence_teste/app/modules/login/infrastructure/datasources/auth_datasource.dart';
@@ -64,5 +65,17 @@ class AuthRepositoryImpl implements AuthRepository {
     } catch (e) {
       return Left(RecoveryPasswordError(message: 'Erro recovery Password'));
     }
+  }
+
+  @override
+  Future<Either<Failure, LoggedUserInfo>> loggedUser() {
+    // TODO: implement loggedUser
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Either<Failure, Unit>> logout() {
+    // TODO: implement logout
+    throw UnimplementedError();
   }
 }
