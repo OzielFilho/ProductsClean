@@ -24,6 +24,21 @@ mixin _$HomeController on _HomeControllerBase, Store {
     });
   }
 
+  final _$productsTempAtom = Atom(name: '_HomeControllerBase.productsTemp');
+
+  @override
+  List<Products> get productsTemp {
+    _$productsTempAtom.reportRead();
+    return super.productsTemp;
+  }
+
+  @override
+  set productsTemp(List<Products> value) {
+    _$productsTempAtom.reportWrite(value, super.productsTemp, () {
+      super.productsTemp = value;
+    });
+  }
+
   final _$getListProductsAsyncAction =
       AsyncAction('_HomeControllerBase.getListProducts');
 
@@ -35,7 +50,8 @@ mixin _$HomeController on _HomeControllerBase, Store {
   @override
   String toString() {
     return '''
-products: ${products}
+products: ${products},
+productsTemp: ${productsTemp}
     ''';
   }
 }

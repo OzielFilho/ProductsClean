@@ -42,7 +42,7 @@ abstract class _LoginControllerBase with Store {
     return result.fold(
       (failure) =>
           asuka.showSnackBar(SnackBar(content: Text(failure.message!))),
-      (result) => Modular.to.pushReplacementNamed('/home'),
+      (result) => Modular.to.pushReplacementNamed('/home/'),
     );
   }
 
@@ -55,7 +55,7 @@ abstract class _LoginControllerBase with Store {
     return result.fold(
       (failure) =>
           asuka.showSnackBar(SnackBar(content: Text(failure.message!))),
-      (result) => Modular.to.pushReplacementNamed('/home'),
+      (result) => Modular.to.pushReplacementNamed('/home/'),
     );
   }
 }

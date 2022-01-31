@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ThemeDataCustom {
@@ -12,6 +13,13 @@ class ThemeDataCustom {
       ),
       appBarTheme: const AppBarTheme(
         backgroundColor: Color(0xff1a1b1f),
+      ),
+      cardColor: const Color(0xff1a1b1f),
+      cupertinoOverrideTheme: const CupertinoThemeData(
+        primaryColor: Color(0xffffcb2a),
+        primaryContrastingColor: Color(0xffffcb2a),
+        barBackgroundColor: Color(0xffffcb2a),
+        scaffoldBackgroundColor: Color(0xffffcb2a),
       ),
       textTheme: TextStyleTheme().textTheme,
       iconTheme: const IconThemeData(color: Colors.white, size: 20),
