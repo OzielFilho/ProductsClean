@@ -34,9 +34,11 @@ abstract class _CreateAccountPageControllerBase with Store {
       (failure) =>
           asuka.showSnackBar(SnackBar(content: Text(failure.message!))),
       (result) {
-        Modular.to.pop();
-        asuka.showSnackBar(
-            const SnackBar(content: Text('User create with success!')));
+        asuka
+            .showSnackBar(
+                const SnackBar(content: Text('User create with success!')))
+            .closed
+            .whenComplete(() => Modular.to.pop());
       },
     );
   }

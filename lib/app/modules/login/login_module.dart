@@ -1,4 +1,5 @@
 import 'package:agence_teste/app/core/presenter/widgets/loading/showLoading.dart';
+import 'package:agence_teste/app/modules/home/home_module.dart';
 import 'package:agence_teste/app/modules/login/domain/usecases/login_with_email_and_password.dart';
 import 'package:agence_teste/app/modules/login/domain/usecases/login_with_google.dart';
 import 'package:agence_teste/app/modules/login/presenter/login_controller.dart';
@@ -51,6 +52,12 @@ class LoginModule extends Module {
             child: (_, args) => const LoginPage(),
             transition: TransitionType.leftToRightWithFade,
             duration: const Duration(milliseconds: 500)),
+        ModuleRoute(
+          '/home',
+          module: HomeModule(),
+          transition: TransitionType.leftToRightWithFade,
+          duration: const Duration(milliseconds: 500),
+        ),
         ChildRoute('/create',
             child: (_, args) => const CreateAccountPage(),
             transition: TransitionType.leftToRightWithFade,
