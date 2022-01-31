@@ -31,6 +31,7 @@ class CardProductWidget extends StatelessWidget {
             Text(
               products.name,
               maxLines: 1,
+              textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.headline3,
             ),
             const SizedBox(
@@ -39,7 +40,9 @@ class CardProductWidget extends StatelessWidget {
             Text(
               products.description,
               maxLines: 2,
+              textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.subtitle1,
+              overflow: TextOverflow.ellipsis,
             ),
             const SizedBox(
               height: 10,

@@ -28,7 +28,7 @@ class DrawerCustom extends StatelessWidget {
                       ),
                       title: const Text("Profile"),
                       onTap: () {
-                        Navigator.pop(context);
+                        Modular.to.pop(context);
                       }),
                   ListTile(
                       leading: const Icon(
@@ -37,7 +37,7 @@ class DrawerCustom extends StatelessWidget {
                       ),
                       title: const Text("My Products"),
                       onTap: () {
-                        Navigator.pop(context);
+                        Modular.to.pop(context);
                       }),
                   ListTile(
                       leading: const Icon(
@@ -46,7 +46,7 @@ class DrawerCustom extends StatelessWidget {
                       ),
                       title: const Text("Settings"),
                       onTap: () {
-                        Navigator.pop(context);
+                        Modular.to.pop(context);
                       }),
                   ListTile(
                       leading: const Icon(
@@ -54,9 +54,7 @@ class DrawerCustom extends StatelessWidget {
                         color: Colors.white,
                       ),
                       title: const Text("Logout"),
-                      onTap: () {
-                        Modular.get<AppController>().logout();
-                      }),
+                      onTap: () => Modular.get<AppController>().logout()),
                 ],
               )
             : Container());

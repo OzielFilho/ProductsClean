@@ -49,9 +49,11 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
             title: const Text('List Products'),
             centerTitle: true,
           ),
-          drawer: DrawerCustom(
-            userResultLogged: controller.userResultLogged!,
-          ),
+          drawer: controller.userResultLogged != null
+              ? DrawerCustom(
+                  userResultLogged: controller.userResultLogged!,
+                )
+              : Container(),
           body: controller.productsTemp.isNotEmpty
               ? Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -77,7 +79,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                 )
               : const Center(
                   child: CupertinoActivityIndicator(
-                  radius: 100,
+                  radius: 70,
                 )));
     });
   }
