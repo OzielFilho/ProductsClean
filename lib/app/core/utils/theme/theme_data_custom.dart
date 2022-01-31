@@ -21,6 +21,10 @@ class ThemeDataCustom {
         barBackgroundColor: Color(0xffffcb2a),
         scaffoldBackgroundColor: Color(0xffffcb2a),
       ),
+      drawerTheme: const DrawerThemeData(
+        backgroundColor: Color(0xff1a1b1f),
+        elevation: 15,
+      ),
       textTheme: TextStyleTheme().textTheme,
       iconTheme: const IconThemeData(color: Colors.white, size: 20),
       scaffoldBackgroundColor: const Color(0xff24252A));

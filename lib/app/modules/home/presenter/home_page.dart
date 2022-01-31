@@ -1,5 +1,6 @@
 import 'package:agence_teste/app/modules/home/presenter/home_controller.dart';
 import 'package:agence_teste/app/modules/home/presenter/widgets/card_product/card_product_widget.dart';
+import 'package:agence_teste/app/modules/home/presenter/widgets/drawer_custom/drawer_custom_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -47,6 +48,9 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
           appBar: AppBar(
             title: const Text('List Products'),
             centerTitle: true,
+          ),
+          drawer: DrawerCustom(
+            userResultLogged: controller.userResultLogged!,
           ),
           body: controller.productsTemp.isNotEmpty
               ? Padding(

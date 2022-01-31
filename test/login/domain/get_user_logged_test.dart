@@ -17,7 +17,7 @@ main() {
     repository = AuthRepositoryImpl();
     usecase = GetLoggedUserImpl(repository!);
     resultInfo = LoggedUserInfo(faker.internet.userName(),
-        faker.internet.email(), faker.phoneNumber.us());
+        faker.internet.email(), faker.phoneNumber.us(), faker.image.image());
   });
 
   test('Should return a LoggedUserInfo with get loggedUser', () async {

@@ -104,8 +104,8 @@ class FirebaseLogin implements AuthDatasource {
     } on FirebaseAuthException catch (_) {
       FirebaseException(plugin: 'Error');
     }
-    return UserResultLogged(
-        user!.displayName!, user.phoneNumber ?? '', user.email!);
+    return UserResultLogged(user!.displayName!, user.phoneNumber ?? '',
+        user.email!, user.photoURL!);
   }
 
   @override
