@@ -97,14 +97,19 @@ class FirebaseLogin implements AuthDatasource {
   }
 
   @override
-  Future<UserResultLogged> getUserLogged() {
-    // TODO: implement getUserLogged
-    throw UnimplementedError();
+  Future<UserResultLogged> getUserLogged() async {
+    User? user;
+    try {
+      user = auth.currentUser!;
+    } on FirebaseAuthException catch (_) {
+      FirebaseException(plugin: 'Error');
+    }
+    return UserResultLogged(
+        user!.displayName!, user.phoneNumber ?? '', user.email!);
   }
 
   @override
-  Future<Unit> logout() {
-    // TODO: implement logout
-    throw UnimplementedError();
+  Future<void> logout() async {
+    return await auth.signOut();
   }
 }

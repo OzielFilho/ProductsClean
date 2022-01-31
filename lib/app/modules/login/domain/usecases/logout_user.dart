@@ -3,7 +3,7 @@ import 'package:agence_teste/app/modules/login/domain/repositories/auth_reposito
 import 'package:dartz/dartz.dart';
 
 abstract class LogoutUser {
-  Future<Either<Failure, Unit>> call();
+  Future<Either<Failure, void>> call();
 }
 
 class LogoutUserImpl implements LogoutUser {
@@ -12,7 +12,7 @@ class LogoutUserImpl implements LogoutUser {
   LogoutUserImpl(this.repository);
 
   @override
-  Future<Either<Failure, Unit>> call() async {
+  Future<Either<Failure, void>> call() async {
     return await repository.logout();
   }
 }
