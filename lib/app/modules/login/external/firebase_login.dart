@@ -1,6 +1,7 @@
 import 'package:agence_teste/app/core/errors/errors.dart';
 import 'package:agence_teste/app/modules/login/infrastructure/datasources/auth_datasource.dart';
 import 'package:agence_teste/app/modules/login/infrastructure/models/authentication_result_model.dart';
+import 'package:agence_teste/app/modules/login/infrastructure/models/user_result_logged.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
@@ -93,5 +94,17 @@ class FirebaseLogin implements AuthDatasource {
     } on FirebaseAuthException catch (_) {
       FirebaseException(plugin: 'Error');
     }
+  }
+
+  @override
+  Future<UserResultLogged> getUserLogged() {
+    // TODO: implement getUserLogged
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Unit> logout() {
+    // TODO: implement logout
+    throw UnimplementedError();
   }
 }

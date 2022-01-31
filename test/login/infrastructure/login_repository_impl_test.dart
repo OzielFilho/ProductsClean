@@ -78,4 +78,13 @@ main() {
 
     expect(response.fold((l) => l, (r) => null), isA<RecoveryPasswordError>());
   });
+
+  test('Should return a Failure GetUserLogged', () async {
+    when(() => datasource!.getUserLogged())
+        .thenThrow((_) async => LoggedUserError());
+
+    final response = await repository!.loggedUser();
+
+    expect(response.fold((l) => l, (r) => null), isA<LoggedUserError>());
+  });
 }

@@ -24,18 +24,18 @@ class RecoveryPasswordError implements Failure {
   });
 }
 
-class LoggedUserError implements Failure{
+class LoggedUserError implements Failure {
   @override
   String? message;
-  RecoveryPasswordError({
+  LoggedUserError({
     this.message,
   });
 }
 
-class LogoutError implements Failure{
+class LogoutError implements Failure {
   @override
   String? message;
-  RecoveryPasswordError({
+  LogoutError({
     this.message,
   });
 }
