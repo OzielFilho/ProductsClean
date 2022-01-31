@@ -1,4 +1,3 @@
-import 'package:agence_teste/app/core/errors/errors.dart';
 import 'package:agence_teste/app/modules/home/domain/entities/result_products.dart';
 import 'package:agence_teste/app/modules/home/domain/repositories/products_repository.dart';
 import 'package:agence_teste/app/modules/home/domain/usecases/get_list_products.dart';
