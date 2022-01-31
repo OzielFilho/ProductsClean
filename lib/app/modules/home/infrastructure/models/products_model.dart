@@ -17,16 +17,16 @@ class Products extends ResultProduct {
 
   Map<String, dynamic> toMap() {
     return {
-      'name': name,
-      'photo': photo,
+      'title': name,
+      'thumb': photo,
       'description': description,
     };
   }
 
   factory Products.fromMap(Map<String, dynamic> map) {
     return Products(
-      map['name'] ?? '',
-      map['photo'] ?? '',
+      map['title'] ?? '',
+      map['thumb'] ?? '',
       map['description'] ?? '',
     );
   }
