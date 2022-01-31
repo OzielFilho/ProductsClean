@@ -2,9 +2,9 @@ import 'package:agence_teste/app/core/presenter/widgets/loading/showLoading.dart
 import 'package:agence_teste/app/modules/login/domain/usecases/login_with_email_and_password.dart';
 import 'package:agence_teste/app/modules/login/domain/usecases/login_with_facebook.dart';
 import 'package:agence_teste/app/modules/login/domain/usecases/login_with_google.dart';
-import 'package:agence_teste/app/modules/login/infrastructure/models/authentication_result_model.dart';
 import 'package:asuka/asuka.dart' as asuka;
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 
 part 'login_controller.g.dart';
@@ -30,18 +30,20 @@ abstract class _LoginControllerBase with Store {
   loginGoogle() async {
     final result = await loginWithGoogle();
     return result.fold(
-        (failure) =>
-            asuka.showSnackBar(SnackBar(content: Text(failure.message!))),
-        (result) => result as AuthenticationResult);
+      (failure) =>
+          asuka.showSnackBar(SnackBar(content: Text(failure.message!))),
+      (result) => Modular.to.pushReplacementNamed('/home/'),
+    );
   }
 
   @action
   loginWithFacebook() async {
     final result = await loginFacebook();
     return result.fold(
-        (failure) =>
-            asuka.showSnackBar(SnackBar(content: Text(failure.message!))),
-        (result) => result as AuthenticationResult);
+      (failure) =>
+          asuka.showSnackBar(SnackBar(content: Text(failure.message!))),
+      (result) => Modular.to.pushReplacementNamed('/home'),
+    );
   }
 
   @action
@@ -51,8 +53,9 @@ abstract class _LoginControllerBase with Store {
     final result = await loginWithEmail(email, password);
     await loading.hide();
     return result.fold(
-        (failure) =>
-            asuka.showSnackBar(SnackBar(content: Text(failure.message!))),
-        (result) => result as AuthenticationResult);
+      (failure) =>
+          asuka.showSnackBar(SnackBar(content: Text(failure.message!))),
+      (result) => Modular.to.pushReplacementNamed('/home'),
+    );
   }
 }

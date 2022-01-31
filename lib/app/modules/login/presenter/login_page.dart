@@ -41,10 +41,10 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
               icon: const Icon(FontAwesomeIcons.facebook),
             ),
             TextButton(
-                onPressed: () => Modular.to.pushNamed('/create'),
+                onPressed: () => Modular.to.pushNamed('create'),
                 child: const Text('Create Account in App')),
             TextButton(
-                onPressed: () => Modular.to.pushNamed('/recovery'),
+                onPressed: () => Modular.to.pushNamed('recovery'),
                 child: const Text('Forgot my Password!'))
           ],
         ),
