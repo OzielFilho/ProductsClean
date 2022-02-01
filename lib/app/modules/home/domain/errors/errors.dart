@@ -7,3 +7,11 @@ class GetListProductsError implements Failure {
     this.message,
   });
 }
+
+class GetLocationError implements Failure {
+  @override
+  String? message;
+  GetLocationError({
+    this.message,
+  });
+}

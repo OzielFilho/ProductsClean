@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 
-//TODO: REFACTOR PAGE IN USECASE LOCATION GET LATLNG
 class MapsWidget extends StatefulWidget {
   const MapsWidget({Key? key}) : super(key: key);
 
