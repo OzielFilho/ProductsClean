@@ -1,6 +1,7 @@
 import 'package:agence_teste/app/core/presenter/widgets/buttom_custom/buttom_custom.dart';
 import 'package:agence_teste/app/modules/home/infrastructure/models/products_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 class CardProductWidget extends StatelessWidget {
   final Products products;
@@ -47,7 +48,11 @@ class CardProductWidget extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            ButtomCustom(title: 'Buy', onTap: () {}),
+            ButtomCustom(
+                title: 'Buy',
+                onTap: () {
+                  Modular.to.pushNamed('select_product', arguments: products);
+                }),
           ],
         ),
       ),
