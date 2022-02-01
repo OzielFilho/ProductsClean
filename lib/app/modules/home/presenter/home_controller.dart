@@ -1,5 +1,7 @@
 import 'package:agence_teste/app/app_controller.dart';
 import 'package:agence_teste/app/modules/home/domain/usecases/get_list_products.dart';
+import 'package:agence_teste/app/modules/home/domain/usecases/get_location.dart';
+import 'package:agence_teste/app/modules/home/infrastructure/models/location_find_model.dart';
 import 'package:agence_teste/app/modules/home/infrastructure/models/products_model.dart';
 import 'package:agence_teste/app/modules/login/infrastructure/models/user_result_logged.dart';
 import 'package:asuka/asuka.dart' as asuka;
@@ -12,9 +14,11 @@ class HomeController = _HomeControllerBase with _$HomeController;
 
 abstract class _HomeControllerBase with Store {
   final GetListProducts listProducts;
-  _HomeControllerBase(this.listProducts) {
+  final GetLocation location;
+  _HomeControllerBase(this.listProducts, this.location) {
     getListProducts();
     getUser();
+    getLocationUser();
   }
   @observable
   UserResultLogged? userResultLogged;
@@ -23,6 +27,18 @@ abstract class _HomeControllerBase with Store {
 
   @observable
   List<Products> productsTemp = [];
+
+  @observable
+  LocationFind? locationFind;
+
+  @action
+  getLocationUser() async {
+    final response = await location();
+    response.fold(
+        (failure) =>
+            asuka.showSnackBar(SnackBar(content: Text(failure.message!))),
+        (result) => locationFind = result as LocationFind?);
+  }
 
   @action
   getListProducts() async {

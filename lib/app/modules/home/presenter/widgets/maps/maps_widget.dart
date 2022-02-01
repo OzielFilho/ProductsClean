@@ -1,6 +1,7 @@
+import 'package:agence_teste/app/modules/home/presenter/home_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:location/location.dart';
 
 class MapsWidget extends StatefulWidget {
   const MapsWidget({Key? key}) : super(key: key);
@@ -11,19 +12,15 @@ class MapsWidget extends StatefulWidget {
 
 class _MapsWidgetState extends State<MapsWidget> {
   late GoogleMapController mapController;
-  Location location = Location();
-  late bool _serviceEnabled;
-  PermissionStatus? _permissionGranted;
-  LocationData? _locationData;
 
-  LatLng? _center;
   final Map<MarkerId, Marker> _markers = <MarkerId, Marker>{};
   void _onMapCreated(GoogleMapController controller) {
     mapController = controller;
 
     var marker = Marker(
       markerId: const MarkerId('User Location'),
-      position: _center!,
+      position: LatLng(Modular.get<HomeController>().locationFind!.lat,
+          Modular.get<HomeController>().locationFind!.long),
     );
 
     setState(() {
@@ -31,48 +28,20 @@ class _MapsWidgetState extends State<MapsWidget> {
     });
   }
 
-  void _getLocation() async {
-    _serviceEnabled = await location.serviceEnabled();
-    if (!_serviceEnabled) {
-      _serviceEnabled = await location.requestService();
-      if (!_serviceEnabled) {
-        return;
-      }
-    }
-
-    _permissionGranted = await location.hasPermission();
-    if (_permissionGranted == PermissionStatus.denied) {
-      _permissionGranted = await location.requestPermission();
-      if (_permissionGranted != PermissionStatus.granted) {
-        return;
-      }
-    }
-    _locationData = await location.getLocation();
-    setState(() {
-      _center = LatLng(_locationData!.latitude!, _locationData!.longitude!);
-    });
-  }
-
-  @override
-  void initState() {
-    _getLocation();
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
-    return _center != null
-        ? SizedBox(
-            height: MediaQuery.of(context).size.height / 3,
-            width: MediaQuery.of(context).size.width,
-            child: GoogleMap(
-              onMapCreated: _onMapCreated,
-              markers: _markers.values.toSet(),
-              initialCameraPosition: CameraPosition(
-                target: _center!,
-                zoom: 20.0,
-              ),
-            ))
-        : Container();
+    return SizedBox(
+        height: MediaQuery.of(context).size.height / 3,
+        width: MediaQuery.of(context).size.width,
+        child: GoogleMap(
+          mapType: MapType.hybrid,
+          onMapCreated: _onMapCreated,
+          markers: _markers.values.toSet(),
+          initialCameraPosition: CameraPosition(
+            target: LatLng(Modular.get<HomeController>().locationFind!.lat,
+                Modular.get<HomeController>().locationFind!.long),
+            zoom: 20.0,
+          ),
+        ));
   }
 }
