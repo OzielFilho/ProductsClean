@@ -1,20 +1,21 @@
 import 'package:agence_teste/app/modules/login/domain/entities/logged_user_info.dart';
-import 'package:agence_teste/app/modules/login/domain/repositories/auth_repository.dart';
+import 'package:agence_teste/app/modules/login/domain/repositories/account_helpers_repository.dart';
 import 'package:agence_teste/app/modules/login/domain/usecases/get_logged_user.dart';
 import 'package:dartz/dartz.dart';
 import 'package:faker/faker.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-class AuthRepositoryImpl extends Mock implements AuthRepository {}
+class AccountHelpersRepositoryImpl extends Mock
+    implements AccountHelpersRepository {}
 
 main() {
-  AuthRepository? repository;
+  AccountHelpersRepository? repository;
   GetLoggedUserImpl? usecase;
   LoggedUserInfo? resultInfo;
 
   setUp(() {
-    repository = AuthRepositoryImpl();
+    repository = AccountHelpersRepositoryImpl();
     usecase = GetLoggedUserImpl(repository!);
     resultInfo = LoggedUserInfo(faker.internet.userName(),
         faker.internet.email(), faker.phoneNumber.us(), faker.image.image());

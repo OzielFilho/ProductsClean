@@ -1,7 +1,7 @@
-import 'package:agence_teste/app/core/presenter/widgets/loading/showLoading.dart';
-import 'package:agence_teste/app/modules/login/domain/usecases/login_with_email_and_password.dart';
-import 'package:agence_teste/app/modules/login/domain/usecases/login_with_facebook.dart';
-import 'package:agence_teste/app/modules/login/domain/usecases/login_with_google.dart';
+import '../../../core/presenter/widgets/loading/showLoading.dart';
+import '../domain/usecases/login_with_email_and_password.dart';
+import '../domain/usecases/login_with_facebook.dart';
+import '../domain/usecases/login_with_google.dart';
 import 'package:asuka/asuka.dart' as asuka;
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';

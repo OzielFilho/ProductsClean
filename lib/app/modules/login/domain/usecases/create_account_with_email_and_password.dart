@@ -1,5 +1,5 @@
-import 'package:agence_teste/app/core/errors/errors.dart';
-import 'package:agence_teste/app/modules/login/domain/repositories/auth_repository.dart';
+import '../../../../core/errors/errors.dart';
+import '../repositories/create_account_repository.dart';
 import 'package:dartz/dartz.dart';
 
 abstract class CreateAccountWithEmailAndPassword {
@@ -8,7 +8,7 @@ abstract class CreateAccountWithEmailAndPassword {
 
 class CreateAccountWithEmailAndPasswordImpl
     implements CreateAccountWithEmailAndPassword {
-  final AuthRepository repository;
+  final CreateAccountRepository repository;
 
   CreateAccountWithEmailAndPasswordImpl(this.repository);
 

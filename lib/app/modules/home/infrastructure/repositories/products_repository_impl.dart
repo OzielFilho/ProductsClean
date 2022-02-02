@@ -1,8 +1,8 @@
-import 'package:agence_teste/app/modules/home/domain/entities/result_products.dart';
-import 'package:agence_teste/app/core/errors/errors.dart';
-import 'package:agence_teste/app/modules/home/domain/errors/errors.dart';
-import 'package:agence_teste/app/modules/home/domain/repositories/products_repository.dart';
-import 'package:agence_teste/app/modules/home/infrastructure/datasources/products_datasource.dart';
+import '../../domain/entities/result_products.dart';
+import '../../../../core/errors/errors.dart';
+import '../../domain/errors/errors.dart';
+import '../../domain/repositories/products_repository.dart';
+import '../datasources/products_datasource.dart';
 import 'package:dartz/dartz.dart';
 
 class ProductsRepositoryImpl implements ProductsRepository {

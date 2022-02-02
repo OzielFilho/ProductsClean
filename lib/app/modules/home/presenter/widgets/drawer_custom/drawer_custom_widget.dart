@@ -1,5 +1,5 @@
-import 'package:agence_teste/app/app_controller.dart';
-import 'package:agence_teste/app/modules/login/infrastructure/models/user_result_logged.dart';
+import '../../../../../app_controller.dart';
+import '../../../../login/infrastructure/models/user_result_logged.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 

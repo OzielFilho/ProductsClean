@@ -1,6 +1,6 @@
-import 'package:agence_teste/app/core/presenter/widgets/buttom_custom/buttom_custom.dart';
-import 'package:agence_teste/app/modules/login/presenter/login_controller.dart';
-import 'package:agence_teste/app/modules/login/presenter/widgets/form_login_email_widget/form_login_email_widget.dart';
+import '../../../core/presenter/widgets/buttom_custom/buttom_custom.dart';
+import 'login_controller.dart';
+import 'widgets/form_login_email_widget/form_login_email_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';

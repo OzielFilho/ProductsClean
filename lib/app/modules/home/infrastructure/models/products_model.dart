@@ -1,18 +1,12 @@
 import 'dart:convert';
 
-import 'package:agence_teste/app/modules/home/domain/entities/result_products.dart';
+import '../../domain/entities/result_products.dart';
 
 class Products extends ResultProduct {
-  // ignore: annotate_overrides, overridden_fields
-  final String name;
-  // ignore: annotate_overrides, overridden_fields
-  final String photo;
-  // ignore: annotate_overrides, overridden_fields
-  final String description;
   Products(
-    this.name,
-    this.photo,
-    this.description,
+    String name,
+    String photo,
+    String description,
   ) : super(name, photo, description);
 
   Map<String, dynamic> toMap() {

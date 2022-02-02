@@ -1,9 +1,10 @@
-import 'package:agence_teste/app/core/presenter/widgets/buttom_custom/buttom_custom.dart';
-import 'package:agence_teste/app/core/presenter/widgets/confirme_dialog/confirme_dialog.dart';
-import 'package:agence_teste/app/modules/home/infrastructure/models/products_model.dart';
-import 'package:agence_teste/app/modules/home/presenter/widgets/maps/maps_widget.dart';
-import 'package:flutter/material.dart';
 import 'package:asuka/asuka.dart' as asuka;
+import 'package:flutter/material.dart';
+
+import '../../../../../core/presenter/widgets/buttom_custom/buttom_custom.dart';
+import '../../../../../core/presenter/widgets/confirme_dialog/confirme_dialog.dart';
+import '../../../infrastructure/models/products_model.dart';
+import '../../widgets/maps/maps_widget.dart';
 
 class ProductsSelectPage extends StatelessWidget {
   final Products products;

@@ -1,6 +1,6 @@
-import 'package:agence_teste/app/modules/home/presenter/home_controller.dart';
-import 'package:agence_teste/app/modules/home/presenter/widgets/card_product/card_product_widget.dart';
-import 'package:agence_teste/app/modules/home/presenter/widgets/drawer_custom/drawer_custom_widget.dart';
+import 'home_controller.dart';
+import 'widgets/card_product/card_product_widget.dart';
+import 'widgets/drawer_custom/drawer_custom_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';

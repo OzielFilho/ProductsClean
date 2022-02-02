@@ -56,35 +56,4 @@ main() {
 
     expect(response.fold((l) => l, (r) => null), isA<LoginError>());
   });
-
-  test('Should return a Failure CreateAccountError', () async {
-    when(() => datasource!.createAccountWithEmailAndPassword(any(), any()))
-        .thenThrow((_) async => CreateAccountError());
-
-    final response = await repository!.createAccountWithEmailAndPassword(
-        faker.internet.email(), faker.internet.password());
-
-    expect(response.fold((l) => l, (r) => null), isA<CreateAccountError>());
-  });
-
-  test('Should return a Failure RecoveryPasswordError', () async {
-    when(() => datasource!.recoveryPassword(
-          any(),
-        )).thenThrow((_) async => RecoveryPasswordError());
-
-    final response = await repository!.recoveryPassword(
-      faker.internet.email(),
-    );
-
-    expect(response.fold((l) => l, (r) => null), isA<RecoveryPasswordError>());
-  });
-
-  test('Should return a Failure GetUserLogged', () async {
-    when(() => datasource!.getUserLogged())
-        .thenThrow((_) async => LoggedUserError());
-
-    final response = await repository!.loggedUser();
-
-    expect(response.fold((l) => l, (r) => null), isA<LoggedUserError>());
-  });
 }

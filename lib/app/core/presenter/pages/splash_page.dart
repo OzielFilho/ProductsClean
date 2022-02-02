@@ -1,6 +1,7 @@
-import 'package:agence_teste/app/app_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+
+import '../../../app_controller.dart';
 
 class SplashScreenPage extends StatelessWidget {
   SplashScreenPage({Key? key}) : super(key: key) {

@@ -1,9 +1,9 @@
-import 'package:agence_teste/app/app_controller.dart';
-import 'package:agence_teste/app/modules/home/domain/usecases/get_list_products.dart';
-import 'package:agence_teste/app/modules/home/domain/usecases/get_location.dart';
-import 'package:agence_teste/app/modules/home/infrastructure/models/location_find_model.dart';
-import 'package:agence_teste/app/modules/home/infrastructure/models/products_model.dart';
-import 'package:agence_teste/app/modules/login/infrastructure/models/user_result_logged.dart';
+import '../../../app_controller.dart';
+import '../domain/usecases/get_list_products.dart';
+import '../domain/usecases/get_location.dart';
+import '../infrastructure/models/location_find_model.dart';
+import '../infrastructure/models/products_model.dart';
+import '../../login/infrastructure/models/user_result_logged.dart';
 import 'package:asuka/asuka.dart' as asuka;
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';

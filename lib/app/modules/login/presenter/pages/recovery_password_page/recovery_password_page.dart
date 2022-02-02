@@ -1,9 +1,10 @@
-import 'package:agence_teste/app/core/presenter/widgets/buttom_custom/buttom_custom.dart';
-import 'package:agence_teste/app/core/presenter/widgets/text_form_field_custom/text_form_field_custom.dart';
-import 'package:agence_teste/app/core/utils/functions/validations.dart';
-import 'package:agence_teste/app/modules/login/presenter/pages/recovery_password_page/recovery_password_page_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+
+import '../../../../../core/presenter/widgets/buttom_custom/buttom_custom.dart';
+import '../../../../../core/presenter/widgets/text_form_field_custom/text_form_field_custom.dart';
+import '../../../../../core/utils/functions/validations.dart';
+import 'recovery_password_page_controller.dart';
 
 class RecoveryPasswordPage extends StatefulWidget {
   const RecoveryPasswordPage({Key? key}) : super(key: key);

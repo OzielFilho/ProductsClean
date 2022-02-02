@@ -1,5 +1,5 @@
-import 'package:agence_teste/app/core/presenter/widgets/loading/showLoading.dart';
-import 'package:agence_teste/app/modules/login/domain/usecases/recovery_password.dart';
+import '../../../../../core/presenter/widgets/loading/showLoading.dart';
+import '../../../domain/usecases/recovery_password.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';

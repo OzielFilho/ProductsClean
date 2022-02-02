@@ -1,5 +1,5 @@
-import 'package:agence_teste/app/core/errors/errors.dart';
-import 'package:agence_teste/app/modules/login/domain/repositories/auth_repository.dart';
+import '../../../../core/errors/errors.dart';
+import '../repositories/account_helpers_repository.dart';
 import 'package:dartz/dartz.dart';
 
 abstract class LogoutUser {
@@ -7,7 +7,7 @@ abstract class LogoutUser {
 }
 
 class LogoutUserImpl implements LogoutUser {
-  final AuthRepository repository;
+  final AccountHelpersRepository repository;
 
   LogoutUserImpl(this.repository);
 

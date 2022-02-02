@@ -1,6 +1,6 @@
-import 'package:agence_teste/app/core/errors/errors.dart';
-import 'package:agence_teste/app/modules/home/infrastructure/datasources/products_datasource.dart';
-import 'package:agence_teste/app/modules/home/infrastructure/models/products_model.dart';
+import '../../../core/errors/errors.dart';
+import '../infrastructure/datasources/products_datasource.dart';
+import '../infrastructure/models/products_model.dart';
 import 'package:dartz/dartz.dart';
 
 class GenerateFakerList implements ProductsDatasource {

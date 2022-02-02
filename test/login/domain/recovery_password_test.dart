@@ -1,18 +1,19 @@
 import 'package:agence_teste/app/core/errors/errors.dart';
-import 'package:agence_teste/app/modules/login/domain/repositories/auth_repository.dart';
+import 'package:agence_teste/app/modules/login/domain/repositories/account_helpers_repository.dart';
 import 'package:agence_teste/app/modules/login/domain/usecases/recovery_password.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-class AuthRepositoryImpl extends Mock implements AuthRepository {}
+class AccountHelpersRepositoryImpl extends Mock
+    implements AccountHelpersRepository {}
 
 main() {
-  AuthRepository? repository;
+  AccountHelpersRepository? repository;
   RecoveryPasswordImpl? usecase;
 
   setUp(() {
-    repository = AuthRepositoryImpl();
+    repository = AccountHelpersRepositoryImpl();
     usecase = RecoveryPasswordImpl(repository!);
   });
 

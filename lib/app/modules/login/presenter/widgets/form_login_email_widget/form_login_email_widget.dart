@@ -1,7 +1,7 @@
-import 'package:agence_teste/app/core/presenter/widgets/buttom_custom/buttom_custom.dart';
-import 'package:agence_teste/app/core/presenter/widgets/text_form_field_custom/text_form_field_custom.dart';
-import 'package:agence_teste/app/core/utils/functions/validations.dart';
-import 'package:agence_teste/app/modules/login/presenter/login_controller.dart';
+import '../../../../../core/presenter/widgets/buttom_custom/buttom_custom.dart';
+import '../../../../../core/presenter/widgets/text_form_field_custom/text_form_field_custom.dart';
+import '../../../../../core/utils/functions/validations.dart';
+import '../../login_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 

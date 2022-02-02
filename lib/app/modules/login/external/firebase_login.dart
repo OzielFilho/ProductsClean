@@ -1,11 +1,11 @@
-import 'package:agence_teste/app/core/errors/errors.dart';
-import 'package:agence_teste/app/modules/login/infrastructure/datasources/auth_datasource.dart';
-import 'package:agence_teste/app/modules/login/infrastructure/models/authentication_result_model.dart';
-import 'package:agence_teste/app/modules/login/infrastructure/models/user_result_logged.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+
+import '../../../core/errors/errors.dart';
+import '../infrastructure/datasources/auth_datasource.dart';
+import '../infrastructure/models/authentication_result_model.dart';
 
 class FirebaseLogin implements AuthDatasource {
   final FirebaseAuth auth;
@@ -72,44 +72,5 @@ class FirebaseLogin implements AuthDatasource {
       Left(Failure(message: e.message));
     }
     return AuthenticationResult(user!.displayName!, await user.getIdToken());
-  }
-
-  @override
-  Future<void> createAccountWithEmailAndPassword(
-      String email, String password) async {
-    try {
-      await auth.createUserWithEmailAndPassword(
-          email: email, password: password);
-    } on FirebaseAuthException catch (_) {
-      FirebaseException(plugin: 'Error');
-    }
-  }
-
-  @override
-  Future<void> recoveryPassword(String email) async {
-    try {
-      await auth.sendPasswordResetEmail(
-        email: email,
-      );
-    } on FirebaseAuthException catch (_) {
-      FirebaseException(plugin: 'Error');
-    }
-  }
-
-  @override
-  Future<UserResultLogged> getUserLogged() async {
-    User? user;
-    try {
-      user = auth.currentUser!;
-    } on FirebaseAuthException catch (_) {
-      FirebaseException(plugin: 'Error');
-    }
-    return UserResultLogged(user!.displayName!, user.phoneNumber ?? '',
-        user.email!, user.photoURL!);
-  }
-
-  @override
-  Future<void> logout() async {
-    return await auth.signOut();
   }
 }

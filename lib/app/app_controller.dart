@@ -1,5 +1,5 @@
-import 'package:agence_teste/app/modules/login/domain/usecases/get_logged_user.dart';
-import 'package:agence_teste/app/modules/login/domain/usecases/logout_user.dart';
+import 'modules/login/domain/usecases/get_logged_user.dart';
+import 'modules/login/domain/usecases/logout_user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';

@@ -1,6 +1,6 @@
-import 'package:agence_teste/app/core/errors/errors.dart';
-import 'package:agence_teste/app/modules/login/domain/entities/logged_user_info.dart';
-import 'package:agence_teste/app/modules/login/domain/repositories/auth_repository.dart';
+import '../../../../core/errors/errors.dart';
+import '../entities/logged_user_info.dart';
+import '../repositories/account_helpers_repository.dart';
 import 'package:dartz/dartz.dart';
 
 abstract class GetLoggedUser {
@@ -8,7 +8,7 @@ abstract class GetLoggedUser {
 }
 
 class GetLoggedUserImpl implements GetLoggedUser {
-  final AuthRepository repository;
+  final AccountHelpersRepository repository;
 
   GetLoggedUserImpl(this.repository);
 

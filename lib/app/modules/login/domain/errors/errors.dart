@@ -1,4 +1,4 @@
-import 'package:agence_teste/app/core/errors/errors.dart';
+import '../../../../core/errors/errors.dart';
 
 class LoginError implements Failure {
   @override

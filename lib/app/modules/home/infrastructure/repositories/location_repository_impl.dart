@@ -1,8 +1,8 @@
-import 'package:agence_teste/app/modules/home/domain/entities/location_result.dart';
-import 'package:agence_teste/app/core/errors/errors.dart';
-import 'package:agence_teste/app/modules/home/domain/errors/errors.dart';
-import 'package:agence_teste/app/modules/home/domain/repositories/location_repository.dart';
-import 'package:agence_teste/app/modules/home/infrastructure/datasources/location_datasource.dart';
+import '../../domain/entities/location_result.dart';
+import '../../../../core/errors/errors.dart';
+import '../../domain/errors/errors.dart';
+import '../../domain/repositories/location_repository.dart';
+import '../datasources/location_datasource.dart';
 import 'package:dartz/dartz.dart';
 
 class LocationRepositoryImpl implements LocationRepository {

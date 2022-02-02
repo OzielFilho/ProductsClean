@@ -1,9 +1,10 @@
-import 'package:agence_teste/app/core/errors/errors.dart';
-import 'package:agence_teste/app/modules/home/infrastructure/datasources/products_datasource.dart';
-import 'package:agence_teste/app/modules/home/infrastructure/models/products_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+
+import '../../../core/errors/errors.dart';
+import '../infrastructure/datasources/products_datasource.dart';
+import '../infrastructure/models/products_model.dart';
 
 class FirebaseDatabase implements ProductsDatasource {
   final FirebaseFirestore firebaseFirestore;

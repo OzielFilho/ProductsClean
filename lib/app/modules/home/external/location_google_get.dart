@@ -1,8 +1,9 @@
-import 'package:agence_teste/app/core/errors/errors.dart';
-import 'package:agence_teste/app/modules/home/infrastructure/datasources/location_datasource.dart';
-import 'package:agence_teste/app/modules/home/infrastructure/models/location_find_model.dart';
 import 'package:dartz/dartz.dart';
 import 'package:location/location.dart';
+
+import '../../../core/errors/errors.dart';
+import '../infrastructure/datasources/location_datasource.dart';
+import '../infrastructure/models/location_find_model.dart';
 
 class LocationGoogle implements LocationDatasource {
   @override

@@ -1,10 +1,10 @@
-import 'package:agence_teste/app/core/errors/errors.dart';
-import 'package:agence_teste/app/modules/login/domain/entities/auth_result.dart';
-import 'package:agence_teste/app/modules/login/domain/entities/logged_user_info.dart';
-import 'package:agence_teste/app/modules/login/domain/errors/errors.dart';
-import 'package:agence_teste/app/modules/login/domain/repositories/auth_repository.dart';
-import 'package:agence_teste/app/modules/login/infrastructure/datasources/auth_datasource.dart';
 import 'package:dartz/dartz.dart';
+
+import '../../../../core/errors/errors.dart';
+import '../../domain/entities/auth_result.dart';
+import '../../domain/errors/errors.dart';
+import '../../domain/repositories/auth_repository.dart';
+import '../datasources/auth_datasource.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
   final AuthDatasource datasource;
@@ -41,49 +41,6 @@ class AuthRepositoryImpl implements AuthRepository {
       return Right(result);
     } catch (e) {
       return Left(LoginError(message: 'Erro Login Email and Password'));
-    }
-  }
-
-  @override
-  Future<Either<Failure, void>> createAccountWithEmailAndPassword(
-      String email, String password) async {
-    try {
-      final result =
-          await datasource.createAccountWithEmailAndPassword(email, password);
-      return Right(result);
-    } catch (e) {
-      return Left(CreateAccountError(
-          message: 'Erro in Create Account with Email and Password'));
-    }
-  }
-
-  @override
-  Future<Either<Failure, void>> recoveryPassword(String email) async {
-    try {
-      final result = await datasource.recoveryPassword(email);
-      return Right(result);
-    } catch (e) {
-      return Left(RecoveryPasswordError(message: 'Erro recovery Password'));
-    }
-  }
-
-  @override
-  Future<Either<Failure, LoggedUserInfo>> loggedUser() async {
-    try {
-      final result = await datasource.getUserLogged();
-      return Right(result);
-    } catch (e) {
-      return Left(LoggedUserError(message: 'Erro get user logged'));
-    }
-  }
-
-  @override
-  Future<Either<Failure, void>> logout() async {
-    try {
-      final result = await datasource.logout();
-      return Right(result);
-    } catch (e) {
-      return Left(LogoutError(message: 'Erro in logout user'));
     }
   }
 }

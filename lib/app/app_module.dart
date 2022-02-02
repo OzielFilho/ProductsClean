@@ -1,26 +1,25 @@
-import 'package:agence_teste/app/core/presenter/pages/splash_page.dart';
-import 'package:agence_teste/app/modules/home/home_module.dart';
-import 'package:agence_teste/app/modules/login/domain/usecases/get_logged_user.dart';
-import 'package:agence_teste/app/modules/login/domain/usecases/logout_user.dart';
-import 'package:agence_teste/app/modules/login/infrastructure/repositories/auth_repository_impl.dart';
-import 'package:agence_teste/app/modules/login/login_module.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 
 import 'app_controller.dart';
+import 'core/presenter/pages/splash_page.dart';
 import 'core/presenter/widgets/loading/showLoading.dart';
-import 'modules/login/external/firebase_login.dart';
+import 'modules/home/home_module.dart';
+import 'modules/login/domain/usecases/get_logged_user.dart';
+import 'modules/login/domain/usecases/logout_user.dart';
+import 'modules/login/external/firebase_helpers.dart';
+import 'modules/login/infrastructure/repositories/account_helpers_repository_impl.dart';
+import 'modules/login/login_module.dart';
 
 class AppModule extends Module {
   @override
   List<Bind> get binds => [
-        Bind((i) => FirebaseLogin(
-            FirebaseAuth.instance, GoogleSignIn(), FacebookAuth.instance)),
-        Bind((i) => AuthRepositoryImpl(i<FirebaseLogin>())),
-        Bind((i) => GetLoggedUserImpl(i<AuthRepositoryImpl>())),
-        Bind((i) => LogoutUserImpl(i<AuthRepositoryImpl>())),
+        Bind((i) => FirebaseHelpersAccount(
+              FirebaseAuth.instance,
+            )),
+        Bind((i) => AccountHelpersRepositoryImpl(i<FirebaseHelpersAccount>())),
+        Bind((i) => GetLoggedUserImpl(i<AccountHelpersRepositoryImpl>())),
+        Bind((i) => LogoutUserImpl(i<AccountHelpersRepositoryImpl>())),
         Bind((i) => LoadingDialogImpl()),
         Bind((i) => AppController(i(), i(), i())),
       ];

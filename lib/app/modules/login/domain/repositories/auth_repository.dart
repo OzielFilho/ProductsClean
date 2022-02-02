@@ -1,6 +1,5 @@
-import 'package:agence_teste/app/modules/login/domain/entities/auth_result.dart';
-import 'package:agence_teste/app/core/errors/errors.dart';
-import 'package:agence_teste/app/modules/login/domain/entities/logged_user_info.dart';
+import '../entities/auth_result.dart';
+import '../../../../core/errors/errors.dart';
 import 'package:dartz/dartz.dart';
 
 abstract class AuthRepository {
@@ -8,11 +7,4 @@ abstract class AuthRepository {
   Future<Either<Failure, AuthResult>> loginWithFacebook();
   Future<Either<Failure, AuthResult>> loginWithEmailAndPassword(
       String email, String password);
-  Future<Either<Failure, void>> createAccountWithEmailAndPassword(
-      String email, String password);
-  Future<Either<Failure, void>> recoveryPassword(String email);
-
-  Future<Either<Failure, LoggedUserInfo>> loggedUser();
-
-  Future<Either<Failure, void>> logout();
 }
