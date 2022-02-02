@@ -17,7 +17,9 @@ class LoadingDialogImpl implements LoadingDialog {
         return Container(
           color: Theme.of(context).backgroundColor.withOpacity(.5),
           alignment: Alignment.center,
-          child: const CircularProgressIndicator(),
+          child: CircularProgressIndicator(
+              valueColor: AlwaysStoppedAnimation<Color>(
+                  Theme.of(context).primaryColor)),
         );
       },
     );

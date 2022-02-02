@@ -63,6 +63,7 @@ class FirebaseLogin implements AuthDatasource {
   Future<AuthenticationResult> loginWithEmailAndPassword(
       String email, String password) async {
     User? user;
+
     try {
       final UserCredential userCredential = await auth
           .signInWithEmailAndPassword(email: email, password: password);
@@ -71,6 +72,9 @@ class FirebaseLogin implements AuthDatasource {
     } on FirebaseAuthException catch (e) {
       Left(Failure(message: e.message));
     }
-    return AuthenticationResult(user!.displayName!, await user.getIdToken());
+
+    return AuthenticationResult(
+        user!.displayName ?? user.email!.substring(0, 5),
+        await user.getIdToken());
   }
 }

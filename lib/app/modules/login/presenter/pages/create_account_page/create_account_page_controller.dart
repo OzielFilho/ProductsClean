@@ -1,7 +1,6 @@
 import '../../../../../core/presenter/widgets/loading/showLoading.dart';
 import '../../../domain/usecases/create_account_with_email_and_password.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import 'package:asuka/asuka.dart' as asuka;
 part 'create_account_page_controller.g.dart';
@@ -25,11 +24,8 @@ abstract class _CreateAccountPageControllerBase with Store {
       (failure) =>
           asuka.showSnackBar(SnackBar(content: Text(failure.message!))),
       (result) {
-        asuka
-            .showSnackBar(
-                const SnackBar(content: Text('User create with success!')))
-            .closed
-            .whenComplete(() => Modular.to.pop());
+        asuka.showSnackBar(
+            const SnackBar(content: Text('User create with success!')));
       },
     );
   }

@@ -25,8 +25,12 @@ class FirebaseHelpersAccount implements AccountHelpersDataSource {
     } on FirebaseAuthException catch (_) {
       FirebaseException(plugin: 'Error');
     }
-    return UserResultLogged(user!.displayName!, user.phoneNumber ?? '',
-        user.email!, user.photoURL!);
+    return UserResultLogged(
+        user!.displayName ?? user.email!.substring(0, 5),
+        user.phoneNumber ?? '',
+        user.email!,
+        user.photoURL ??
+            'https://cdn.neemo.com.br/uploads/settings_webdelivery/logo/3957/image-not-found.jpg');
   }
 
   @override
