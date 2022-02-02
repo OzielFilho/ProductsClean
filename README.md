@@ -1,16 +1,21 @@
-# agence_teste
+# Products Clean
 
-A new Flutter project.
+![](https://www.forcebolt.com/wp-content/uploads/2020/11/5847f40ecef1014c0b5e488a.png)
 
-## Getting Started
+------------
 
-This project is a starting point for a Flutter application.
+Mobile application created in Flutter following the principles of SOLID and using Clean Architecture like architecture. In addition to passing all use case tests.
 
-A few resources to get you started if this is your first Flutter project:
+- Login Module : 
+	 - Create account with Email and Password;
+	 - Login in app with Facebook and Google; 
+	 - Recovery Password;
+	 - Login in app with Email and Password;
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+- Home Module : 
+	 - List of Products with name, photo and description;
+	 - Clicking on the buy button the user is taken to the Selected Product screen ; 
+	 - In Selected Product is shown a map with its location, selected product and a purchase button confirm ;
+	 - Drawer with user information and a user logout button;
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+App using firebase as database and login service. But the code is in clean arc allowing modifications.
