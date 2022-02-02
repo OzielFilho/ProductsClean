@@ -54,7 +54,7 @@ abstract class _HomeControllerBase with Store {
     });
   }
 
-  @computed
+  @action
   getUser() async =>
       userResultLogged = await Modular.get<AppController>().getLoggedUser();
 }

@@ -1,8 +1,9 @@
 import 'package:agence_teste/app/core/presenter/widgets/buttom_custom/buttom_custom.dart';
+import 'package:agence_teste/app/core/presenter/widgets/confirme_dialog/confirme_dialog.dart';
 import 'package:agence_teste/app/modules/home/infrastructure/models/products_model.dart';
 import 'package:agence_teste/app/modules/home/presenter/widgets/maps/maps_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
+import 'package:asuka/asuka.dart' as asuka;
 
 class ProductsSelectPage extends StatelessWidget {
   final Products products;
@@ -66,7 +67,24 @@ class ProductsSelectPage extends StatelessWidget {
           const SizedBox(
             height: 150,
           ),
-          ButtomCustom(title: 'Buy Product', onTap: () => Modular.to.pop()),
+          ButtomCustom(
+              title: 'Buy Product',
+              onTap: () {
+                showDialog(
+                    context: context,
+                    barrierDismissible: true,
+                    builder: (cont) => ShowDialogConfime(
+                          content:
+                              'Do you want to buy the product ${products.name}?',
+                          title: 'Do you want to order?',
+                          onClick: () {
+                            Navigator.pop(cont);
+                            Navigator.pop(context);
+                            asuka.showSnackBar(const SnackBar(
+                                content: Text('Purchase made successfully')));
+                          },
+                        ));
+              }),
         ],
       ),
     );

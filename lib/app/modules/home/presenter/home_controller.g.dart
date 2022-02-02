@@ -9,6 +9,22 @@ part of 'home_controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$HomeController on _HomeControllerBase, Store {
+  final _$userResultLoggedAtom =
+      Atom(name: '_HomeControllerBase.userResultLogged');
+
+  @override
+  UserResultLogged? get userResultLogged {
+    _$userResultLoggedAtom.reportRead();
+    return super.userResultLogged;
+  }
+
+  @override
+  set userResultLogged(UserResultLogged? value) {
+    _$userResultLoggedAtom.reportWrite(value, super.userResultLogged, () {
+      super.userResultLogged = value;
+    });
+  }
+
   final _$productsAtom = Atom(name: '_HomeControllerBase.products');
 
   @override
@@ -39,6 +55,29 @@ mixin _$HomeController on _HomeControllerBase, Store {
     });
   }
 
+  final _$locationFindAtom = Atom(name: '_HomeControllerBase.locationFind');
+
+  @override
+  LocationFind? get locationFind {
+    _$locationFindAtom.reportRead();
+    return super.locationFind;
+  }
+
+  @override
+  set locationFind(LocationFind? value) {
+    _$locationFindAtom.reportWrite(value, super.locationFind, () {
+      super.locationFind = value;
+    });
+  }
+
+  final _$getLocationUserAsyncAction =
+      AsyncAction('_HomeControllerBase.getLocationUser');
+
+  @override
+  Future getLocationUser() {
+    return _$getLocationUserAsyncAction.run(() => super.getLocationUser());
+  }
+
   final _$getListProductsAsyncAction =
       AsyncAction('_HomeControllerBase.getListProducts');
 
@@ -47,11 +86,20 @@ mixin _$HomeController on _HomeControllerBase, Store {
     return _$getListProductsAsyncAction.run(() => super.getListProducts());
   }
 
+  final _$getUserAsyncAction = AsyncAction('_HomeControllerBase.getUser');
+
+  @override
+  Future getUser() {
+    return _$getUserAsyncAction.run(() => super.getUser());
+  }
+
   @override
   String toString() {
     return '''
+userResultLogged: ${userResultLogged},
 products: ${products},
-productsTemp: ${productsTemp}
+productsTemp: ${productsTemp},
+locationFind: ${locationFind}
     ''';
   }
 }

@@ -11,6 +11,7 @@ class ThemeDataCustom {
           primary: const Color(0xffffcb2a),
         ),
       ),
+      dialogTheme: const DialogTheme(backgroundColor: Color(0xff1a1b1f)),
       appBarTheme: const AppBarTheme(
         backgroundColor: Color(0xff1a1b1f),
       ),
