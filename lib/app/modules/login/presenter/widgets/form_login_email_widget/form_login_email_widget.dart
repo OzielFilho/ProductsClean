@@ -9,6 +9,9 @@ class FormLoginEmailWidget extends StatelessWidget {
   FormLoginEmailWidget({Key? key}) : super(key: key);
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final controller = Modular.get<LoginController>();
+  final TextEditingController controllerEmail = TextEditingController();
+
+  final TextEditingController controllerPassword = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -16,7 +19,7 @@ class FormLoginEmailWidget extends StatelessWidget {
         child: Column(
           children: [
             CustomTextFormFieldCustom(
-              controllerText: controller.controllerEmail,
+              controllerText: controllerEmail,
               hint: 'Email',
               issecured: false,
               valid: (value) {
@@ -33,7 +36,7 @@ class FormLoginEmailWidget extends StatelessWidget {
               height: 10,
             ),
             CustomTextFormFieldCustom(
-              controllerText: controller.controllerPassword,
+              controllerText: controllerPassword,
               hint: 'Password',
               valid: (value) {
                 if (!Validations(value).isPassword) {
@@ -54,8 +57,7 @@ class FormLoginEmailWidget extends StatelessWidget {
                 onTap: () {
                   if (_formKey.currentState!.validate()) {
                     controller.loginWithEmailAndPassword(
-                        controller.controllerEmail.text,
-                        controller.controllerPassword.text);
+                        controllerEmail.text, controllerPassword.text);
                   }
                 }),
             const SizedBox(

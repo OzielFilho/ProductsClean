@@ -15,6 +15,11 @@ class CreateAccountPage extends StatefulWidget {
 class _CreateAccountPageState
     extends ModularState<CreateAccountPage, CreateAccountPageController> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  TextEditingController emailCreate = TextEditingController();
+
+  TextEditingController passwordCreate = TextEditingController();
+
+  TextEditingController passwordCreateConfirme = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,7 +43,7 @@ class _CreateAccountPageState
                   height: 10,
                 ),
                 CustomTextFormFieldCustom(
-                  controllerText: controller.emailCreate,
+                  controllerText: emailCreate,
                   hint: 'Email',
                   issecured: false,
                   valid: (value) {
@@ -55,7 +60,7 @@ class _CreateAccountPageState
                   height: 10,
                 ),
                 CustomTextFormFieldCustom(
-                  controllerText: controller.passwordCreate,
+                  controllerText: passwordCreate,
                   hint: 'Password',
                   valid: (value) {
                     if (!Validations(value).isPassword) {
@@ -72,14 +77,14 @@ class _CreateAccountPageState
                   height: 10,
                 ),
                 CustomTextFormFieldCustom(
-                  controllerText: controller.passwordCreateConfirme,
+                  controllerText: passwordCreateConfirme,
                   hint: 'Confirme your Password',
                   valid: (value) {
                     if (!Validations(value).isPassword) {
                       return 'Password is Invalid';
                     }
                     if (!Validations(value)
-                        .equatablePassword(controller.passwordCreate.text)) {
+                        .equatablePassword(passwordCreate.text)) {
                       return 'Passwords do not match';
                     }
                   },
@@ -97,8 +102,7 @@ class _CreateAccountPageState
                     onTap: () {
                       if (_formKey.currentState!.validate()) {
                         controller.createAccountWithEmailAndPassword(
-                            controller.emailCreate.text,
-                            controller.passwordCreateConfirme.text);
+                            emailCreate.text, passwordCreateConfirme.text);
                       }
                     }),
                 const SizedBox(

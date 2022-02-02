@@ -20,12 +20,6 @@ abstract class _LoginControllerBase with Store {
   _LoginControllerBase(this.loginWithGoogle, this.loginFacebook,
       this.loginWithEmail, this.loading);
 
-  @observable
-  TextEditingController controllerEmail = TextEditingController();
-
-  @observable
-  TextEditingController controllerPassword = TextEditingController();
-
   @action
   loginGoogle() async {
     final result = await loginWithGoogle();

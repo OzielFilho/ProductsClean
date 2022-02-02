@@ -16,7 +16,7 @@ class RecoveryPasswordPage extends StatefulWidget {
 class _RecoveryPasswordPageState
     extends ModularState<RecoveryPasswordPage, RecoveryPasswordPageController> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
+  TextEditingController emailRecovery = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,7 +40,7 @@ class _RecoveryPasswordPageState
                   height: 10,
                 ),
                 CustomTextFormFieldCustom(
-                  controllerText: controller.emailRecovery,
+                  controllerText: emailRecovery,
                   hint: 'Email',
                   issecured: false,
                   valid: (value) {
@@ -60,8 +60,7 @@ class _RecoveryPasswordPageState
                     title: 'Recovery Password',
                     onTap: () {
                       if (_formKey.currentState!.validate()) {
-                        controller
-                            .recoveryPassword(controller.emailRecovery.text);
+                        controller.recoveryPassword(emailRecovery.text);
                       }
                     }),
                 const SizedBox(

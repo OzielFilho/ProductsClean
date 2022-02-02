@@ -15,9 +15,6 @@ abstract class _RecoveryPasswordPageControllerBase with Store {
   final RecoveryPassword recoveryPasswordI;
   _RecoveryPasswordPageControllerBase(this.loading, this.recoveryPasswordI);
 
-  @observable
-  TextEditingController emailRecovery = TextEditingController();
-
   @action
   recoveryPassword(String email) async {
     loading.show();

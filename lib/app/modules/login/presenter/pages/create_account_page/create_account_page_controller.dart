@@ -15,15 +15,6 @@ abstract class _CreateAccountPageControllerBase with Store {
 
   _CreateAccountPageControllerBase(this.createAccountWithEmail, this.loading);
 
-  @observable
-  TextEditingController emailCreate = TextEditingController();
-
-  @observable
-  TextEditingController passwordCreate = TextEditingController();
-
-  @observable
-  TextEditingController passwordCreateConfirme = TextEditingController();
-
   @action
   createAccountWithEmailAndPassword(String email, String password) async {
     loading.show();

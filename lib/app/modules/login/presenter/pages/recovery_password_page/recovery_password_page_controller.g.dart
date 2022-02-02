@@ -10,22 +10,6 @@ part of 'recovery_password_page_controller.dart';
 
 mixin _$RecoveryPasswordPageController
     on _RecoveryPasswordPageControllerBase, Store {
-  final _$emailRecoveryAtom =
-      Atom(name: '_RecoveryPasswordPageControllerBase.emailRecovery');
-
-  @override
-  TextEditingController get emailRecovery {
-    _$emailRecoveryAtom.reportRead();
-    return super.emailRecovery;
-  }
-
-  @override
-  set emailRecovery(TextEditingController value) {
-    _$emailRecoveryAtom.reportWrite(value, super.emailRecovery, () {
-      super.emailRecovery = value;
-    });
-  }
-
   final _$recoveryPasswordAsyncAction =
       AsyncAction('_RecoveryPasswordPageControllerBase.recoveryPassword');
 
@@ -38,7 +22,7 @@ mixin _$RecoveryPasswordPageController
   @override
   String toString() {
     return '''
-emailRecovery: ${emailRecovery}
+
     ''';
   }
 }
