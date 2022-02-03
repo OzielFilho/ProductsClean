@@ -28,12 +28,8 @@ class LoginModule extends Module {
   List<Bind> get binds => [
         Bind((i) => FirebaseLogin(
             FirebaseAuth.instance, GoogleSignIn(), FacebookAuth.instance)),
-        Bind((i) => FirebaseCreateAccount(
-              FirebaseAuth.instance,
-            )),
-        Bind((i) => FirebaseHelpersAccount(
-              FirebaseAuth.instance,
-            )),
+        Bind((i) => FirebaseCreateAccount(FirebaseAuth.instance)),
+        Bind((i) => FirebaseHelpersAccount(FirebaseAuth.instance)),
         Bind((i) => AuthRepositoryImpl(i<FirebaseLogin>())),
         Bind((i) => AccountHelpersRepositoryImpl(i<FirebaseHelpersAccount>())),
         Bind((i) => CreateAccountRepositoryImpl(i<FirebaseCreateAccount>())),
@@ -50,9 +46,7 @@ class LoginModule extends Module {
             i<LoginWithEmailAndPasswordImpl>(),
             i<LoadingDialogImpl>())),
         Bind((i) => RecoveryPasswordPageController(
-              i<LoadingDialogImpl>(),
-              i<RecoveryPasswordImpl>(),
-            )),
+            i<LoadingDialogImpl>(), i<RecoveryPasswordImpl>())),
         Bind((i) => CreateAccountPageController(
             i<CreateAccountWithEmailAndPasswordImpl>(),
             i<LoadingDialogImpl>())),
